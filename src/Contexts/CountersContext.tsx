@@ -1,5 +1,6 @@
 import {
   createContext,
+  useEffect,
   useReducer,
   type Dispatch,
   type ReactNode,
@@ -21,7 +22,6 @@ export interface ICounter {
 
 export interface ICountersState {
   counters: ICounter[];
-  conunterToBeUpdatedID: number;
 }
 
 export interface IContextValue {
@@ -40,7 +40,6 @@ export const INITIAL_COUNTERS_STATE: ICountersState = {
       lap: 33,
     },
   ],
-  conunterToBeUpdatedID: 0,
 };
 
 export const CountersContext = createContext<IContextValue>({
@@ -54,8 +53,12 @@ interface IProps {
 export const CountersContextProvider = ({ children }: IProps) => {
   const [countersState, dispatch] = useReducer(
     CountersReducers,
-    INITIAL_COUNTERS_STATE,
+    JSON.parse(localStorage.getItem("counterState")) || INITIAL_COUNTERS_STATE,
   );
+
+  useEffect(() => {
+    localStorage.setItem("counterState", JSON.stringify(countersState));
+  });
 
   const values: IContextValue = { countersState, dispatch };
 

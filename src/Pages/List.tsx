@@ -1,10 +1,29 @@
+import { useContext } from "react";
 import Navbar from "../Components/Navbar";
+import { CountersContext } from "../Contexts/CountersContext";
+import { FaPen } from "react-icons/fa";
+import { MdDelete } from "react-icons/md";
 
 const List = () => {
+  const { countersState } = useContext(CountersContext);
+
+  const counters = countersState.counters;
   return (
     <div>
       <Navbar />
-      <h2>List</h2>
+      <ul className="flex flex-col items-center gap-4 mt-8">
+        {counters.map((counter) => (
+          <li
+            className={`flex gap-4 items-center justify-between p-4 w-[96%] rounded-md ${counter.isActive ? "bg-cyan-600" : "bg-slate-400"}`}
+            key={counter.id}
+          >
+            {`${counter.name} -- ${counter.count}`}{" "}
+            <div className="flex gap-4">
+              <FaPen /> <MdDelete />
+            </div>
+          </li>
+        ))}
+      </ul>
     </div>
   );
 };
