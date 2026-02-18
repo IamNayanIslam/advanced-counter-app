@@ -5,7 +5,8 @@ export type CounterAction =
   | { type: "INCREMENT_COUNT"; payload: string }
   | { type: "DECREMENT_COUNT" }
   | { type: "RESET_COUNT" }
-  | { type: "TOGGLE_IS_ACTIVE"; payload: string };
+  | { type: "TOGGLE_IS_ACTIVE"; payload: string }
+  | { type: "DELETE_COUNTER"; payload: string };
 
 export const CountersReducers = (
   state: ICountersState,
@@ -56,6 +57,13 @@ export const CountersReducers = (
           counter.id !== action.payload
             ? { ...counter, isActive: false }
             : counter,
+        ),
+      };
+    case "DELETE_COUNTER":
+      return {
+        ...state,
+        counters: state.counters.filter(
+          (counter) => counter.id !== action.payload,
         ),
       };
 

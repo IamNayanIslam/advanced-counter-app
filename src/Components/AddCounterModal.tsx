@@ -1,4 +1,4 @@
-import { useContext, useEffect, useState } from "react";
+import { useContext, useState } from "react";
 import toast from "react-hot-toast";
 import { v4 as uuidv4 } from "uuid";
 import { CountersContext } from "../Contexts/CountersContext";
@@ -18,6 +18,25 @@ const AddCounterModal = ({ setAddCounterModal }: IProps) => {
   });
 
   const { dispatch } = useContext(CountersContext);
+
+  /* const counterOnReserve = {
+    name: "New Counter",
+    count: 0,
+    id: uuidv4(),
+    isActive: true,
+    target: 99,
+    lap: 33,
+  };
+
+  useEffect(() => {
+    if (
+      countersState.counters.length === 0 ||
+      countersState.counters.filter((counter) => counter.isActive).length === 0
+    ) {
+      dispatch({ type: "ADD_COUNTER", payload: counterOnReserve });
+    }
+    console.log(countersState);
+  }, [countersState]); */
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const value =
@@ -44,8 +63,8 @@ const AddCounterModal = ({ setAddCounterModal }: IProps) => {
       return toast.error("Lap can't be empty");
     }
 
-    dispatch({ type: "TOGGLE_IS_ACTIVE", payload: newCounter.id });
     dispatch({ type: "ADD_COUNTER", payload: newCounter });
+    dispatch({ type: "TOGGLE_IS_ACTIVE", payload: newCounter.id });
     setNewCounter({ ...newCounter, name: "" });
     setAddCounterModal(false);
   };
@@ -58,9 +77,6 @@ const AddCounterModal = ({ setAddCounterModal }: IProps) => {
     e.stopPropagation();
   };
 
-  useEffect(() => {
-    console.log(newCounter);
-  }, [newCounter]);
   return (
     <div
       onClick={closeAddCounterModal}

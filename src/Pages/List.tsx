@@ -5,7 +5,10 @@ import { FaPen } from "react-icons/fa";
 import { MdDelete } from "react-icons/md";
 
 const List = () => {
-  const { countersState } = useContext(CountersContext);
+  const { countersState, dispatch } = useContext(CountersContext);
+  const handleDelete = (id: string) => {
+    dispatch({ type: "DELETE_COUNTER", payload: id });
+  };
 
   const counters = countersState.counters;
   return (
@@ -19,7 +22,10 @@ const List = () => {
           >
             {`${counter.name} -- ${counter.count}`}{" "}
             <div className="flex gap-4">
-              <FaPen /> <MdDelete />
+              <FaPen />{" "}
+              <button onClick={() => handleDelete(counter.id)}>
+                <MdDelete />
+              </button>
             </div>
           </li>
         ))}
