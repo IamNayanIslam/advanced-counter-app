@@ -51,21 +51,22 @@ interface IProps {
   children: ReactNode;
 }
 export const CountersContextProvider = ({ children }: IProps) => {
-  const getInitialState = (): ICountersState => {
+  const getInitialState = (initialState: ICountersState): ICountersState => {
     const savedData = localStorage.getItem("counterState");
-    if (savedData !== null) {
-      try {
-        return JSON.parse(savedData) as ICountersState;
-      } catch (error) {
-        console.error("Failed to parse localStorage data:", error);
-        return INITIAL_COUNTERS_STATE;
-      }
+
+    if (savedData === null) return initialState;
+
+    try {
+      return JSON.parse(savedData) as ICountersState;
+    } catch (error) {
+      console.error("Failed to parse localStorage data:", error);
+      return initialState;
     }
-    return INITIAL_COUNTERS_STATE;
   };
   const [countersState, dispatch] = useReducer(
     CountersReducers,
-    getInitialState(),
+    INITIAL_COUNTERS_STATE,
+    getInitialState,
   );
 
   useEffect(() => {
