@@ -52,14 +52,27 @@ interface IProps {
 }
 export const CountersContextProvider = ({ children }: IProps) => {
   const savedData = localStorage.getItem("counterState");
+
+  const getInitialState = (): ICountersState => {
+    const savedData = localStorage.getItem("counterState");
+    if (savedData) {
+      try {
+        return JSON.parse(savedData) as ICountersState;
+      } catch (error) {
+        console.error("Failed to parse localStorage data:", error);
+        return INITIAL_COUNTERS_STATE;
+      }
+    }
+    return INITIAL_COUNTERS_STATE;
+  };
   const [countersState, dispatch] = useReducer(
     CountersReducers,
-    savedData ? JSON.parse(savedData) : INITIAL_COUNTERS_STATE,
+    getInitialState(),
   );
 
   useEffect(() => {
     localStorage.setItem("counterState", JSON.stringify(countersState));
-  });
+  }, [countersState]);
 
   const values: IContextValue = { countersState, dispatch };
 
