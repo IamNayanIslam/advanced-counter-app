@@ -14,7 +14,7 @@ const {dispatch} = useContext(CountersContext)
     dispatch({type: "INCREMENT_COUNT", payload: counter.id})
   };
   return (
-    <div className="flex justify-center">
+    <div className="flex flex-col gap-8 justify-center items-center">
       <div
         onClick={handleIncrement}
         className="w-[300px] h-[300px] bg-cyan-600 rounded-full flex justify-center items-center"
@@ -23,6 +23,7 @@ const {dispatch} = useContext(CountersContext)
           {counter.count}
         </h2>
       </div>
+      <h2 className="text-cyan-600 capitalize text-2xl font-bold">{counter.name}</h2>
     </div>
   );
 };
