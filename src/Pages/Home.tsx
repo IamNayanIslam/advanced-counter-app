@@ -1,4 +1,4 @@
-import { useContext, useEffect, useState } from "react";
+import { useContext, useState } from "react";
 import Navbar from "../Components/Navbar";
 import SecondNav from "../Components/SecondNav";
 import { CountersContext } from "../Contexts/CountersContext";

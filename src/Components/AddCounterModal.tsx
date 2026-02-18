@@ -2,7 +2,7 @@ interface IProps {
     setAddCounterModal: (value: boolean)=> void;
 }
 
-const AddCounterModal = ({setAddCounterModal}) => {
+const AddCounterModal = ({setAddCounterModal}: IProps) => {
 
     const closeAddCounterModal = ()=>{
         

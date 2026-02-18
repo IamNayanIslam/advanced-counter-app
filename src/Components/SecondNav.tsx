@@ -7,7 +7,7 @@ interface IProps {
   setAddCounterModal: (value: boolean)=>void;
 }
 
-const SecondNav = ({setAddCounterModal}) => {
+const SecondNav = ({setAddCounterModal}: IProps) => {
   return (
     <div>
       <div className="flex justify-between items-center bg-transparent px-4 py-4 mb-10">
