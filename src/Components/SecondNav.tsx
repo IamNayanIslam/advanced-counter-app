@@ -3,7 +3,11 @@ import { CiCircleMinus } from "react-icons/ci";
 import { MdPlaylistAddCircle } from "react-icons/md";
 import { MdMotionPhotosAuto } from "react-icons/md";
 
-const SecondNav = () => {
+interface IProps {
+  setAddCounterModal: (value: boolean)=>void;
+}
+
+const SecondNav = ({setAddCounterModal}) => {
   return (
     <div>
       <div className="flex justify-between items-center bg-transparent px-4 py-4 mb-10">
@@ -17,7 +21,7 @@ const SecondNav = () => {
           <button className="text-2xl text-gray-700 bg-cyan-600 p-2 rounded-full">
             <CiCircleMinus />
           </button>
-          <button className="text-2xl text-gray-700 bg-cyan-600 p-2 rounded-full">
+          <button onClick={()=>setAddCounterModal(true)} className="text-2xl text-gray-700 bg-cyan-600 p-2 rounded-full">
             <MdPlaylistAddCircle />
           </button>
         </div>
