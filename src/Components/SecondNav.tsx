@@ -3,21 +3,18 @@ import { CiCircleMinus } from "react-icons/ci";
 import { MdPlaylistAddCircle } from "react-icons/md";
 import { MdMotionPhotosAuto } from "react-icons/md";
 import { useContext } from "react";
-import { CountersContext, type ICountersState } from "../Contexts/CountersContext";
+import { CountersContext } from "../Contexts/CountersContext";
 
 interface IProps {
-  setAddCounterModal: (value: boolean)=>void;
+  setAddCounterModal: (value: boolean) => void;
 }
 
-
-const SecondNav = ({setAddCounterModal}: IProps) => {
-  const {countersState, dispatch} = useContext(CountersContext);
-
-  const counters: ICountersState = countersState.counters;
+const SecondNav = ({ setAddCounterModal }: IProps) => {
+  const { dispatch } = useContext(CountersContext);
 
   const handleDecrement = (): void => {
-      dispatch({type: "DECREMENT_COUNT"})
-  }
+    dispatch({ type: "DECREMENT_COUNT" });
+  };
   return (
     <div>
       <div className="flex justify-between items-center bg-transparent px-4 py-4 mb-10">
@@ -28,10 +25,16 @@ const SecondNav = ({setAddCounterModal}: IProps) => {
           <button className="text-2xl text-gray-700 bg-cyan-600 p-2 rounded-full">
             <RiRestartFill />
           </button>
-          <button onClick={handleDecrement} className="text-2xl text-gray-700 bg-cyan-600 p-2 rounded-full">
+          <button
+            onClick={handleDecrement}
+            className="text-2xl text-gray-700 bg-cyan-600 p-2 rounded-full"
+          >
             <CiCircleMinus />
           </button>
-          <button onClick={()=>setAddCounterModal(true)} className="text-2xl text-gray-700 bg-cyan-600 p-2 rounded-full">
+          <button
+            onClick={() => setAddCounterModal(true)}
+            className="text-2xl text-gray-700 bg-cyan-600 p-2 rounded-full"
+          >
             <MdPlaylistAddCircle />
           </button>
         </div>
