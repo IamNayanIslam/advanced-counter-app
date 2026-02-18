@@ -51,8 +51,6 @@ interface IProps {
   children: ReactNode;
 }
 export const CountersContextProvider = ({ children }: IProps) => {
-  const savedData = localStorage.getItem("counterState");
-
   const getInitialState = (): ICountersState => {
     const savedData = localStorage.getItem("counterState");
     if (savedData) {
