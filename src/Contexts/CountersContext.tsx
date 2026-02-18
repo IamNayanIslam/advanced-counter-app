@@ -51,9 +51,10 @@ interface IProps {
   children: ReactNode;
 }
 export const CountersContextProvider = ({ children }: IProps) => {
+  const savedData = localStorage.getItem("counterState");
   const [countersState, dispatch] = useReducer(
     CountersReducers,
-    JSON.parse(localStorage.getItem("counterState")) || INITIAL_COUNTERS_STATE,
+    savedData ? JSON.parse(savedData) : INITIAL_COUNTERS_STATE,
   );
 
   useEffect(() => {
