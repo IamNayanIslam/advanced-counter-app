@@ -4,7 +4,8 @@ export type CounterAction =
   | { type: "ADD_COUNTER"; payload: ICounter }
   | { type: "INCREMENT_COUNT"; payload: string }
   | { type: "DECREMENT_COUNT" }
-  | { type: "RESET_COUNT" };
+  | { type: "RESET_COUNT" }
+  | { type: "TOGGLE_IS_ACTIVE"; payload: string };
 
 export const CountersReducers = (
   state: ICountersState,
@@ -44,6 +45,16 @@ export const CountersReducers = (
         counters: state.counters.map((counter) =>
           counter.isActive
             ? { ...counter, count: counter.count > 0 ? 0 : counter.count }
+            : counter,
+        ),
+      };
+
+    case "TOGGLE_IS_ACTIVE":
+      return {
+        ...state,
+        counters: state.counters.map((counter) =>
+          counter.id !== action.payload
+            ? { ...counter, isActive: false }
             : counter,
         ),
       };
