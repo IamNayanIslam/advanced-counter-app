@@ -1,9 +1,17 @@
-import { useState } from "react";
 
-const CounterCircle = () => {
-  const [count, setCount] = useState(0);
+import { useContext } from "react";
+import { CountersContext, type ICounter } from "../Contexts/CountersContext";
+
+interface IProps  {
+  counter: ICounter
+}
+
+const CounterCircle = ({counter}: IProps) => {
+  
+const {dispatch} = useContext(CountersContext)
+
   const handleIncrement = () => {
-    setCount((prevCount) => prevCount + 1);
+    dispatch({type: "INCREMENT_COUNT", payload: counter.id})
   };
   return (
     <div className="flex justify-center">
@@ -12,7 +20,7 @@ const CounterCircle = () => {
         className="w-[300px] h-[300px] bg-cyan-600 rounded-full flex justify-center items-center"
       >
         <h2 className="text-[120px] font-bold text-center text-gray-700 select-none">
-          {count}
+          {counter.count}
         </h2>
       </div>
     </div>
