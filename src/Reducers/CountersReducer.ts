@@ -2,8 +2,9 @@ import type { ICounter, ICountersState } from "../Contexts/CountersContext";
 
 export type CounterAction =
   | { type: "ADD_COUNTER"; payload: ICounter }
-  | { type: "INCREMENT_COUNT"; payload: number }
-  | { type: "DECREMENT_COUNT" };
+  | { type: "INCREMENT_COUNT"; payload: string }
+  | { type: "DECREMENT_COUNT" }
+  | { type: "RESET_COUNT" };
 
 export const CountersReducers = (
   state: ICountersState,
@@ -29,11 +30,20 @@ export const CountersReducers = (
       return {
         ...state,
         counters: state.counters.map((counter) =>
-          counter.isActive === true
+          counter.isActive
             ? {
                 ...counter,
                 count: counter.count > 0 ? counter.count - 1 : counter.count,
               }
+            : counter,
+        ),
+      };
+    case "RESET_COUNT":
+      return {
+        ...state,
+        counters: state.counters.map((counter) =>
+          counter.isActive
+            ? { ...counter, count: counter.count > 0 ? 0 : counter.count }
             : counter,
         ),
       };

@@ -15,6 +15,10 @@ const SecondNav = ({ setAddCounterModal }: IProps) => {
   const handleDecrement = (): void => {
     dispatch({ type: "DECREMENT_COUNT" });
   };
+
+  const handleReset = () => {
+    dispatch({ type: "RESET_COUNT" });
+  };
   return (
     <div>
       <div className="flex justify-between items-center bg-transparent px-4 py-4 mb-10">
@@ -22,7 +26,10 @@ const SecondNav = ({ setAddCounterModal }: IProps) => {
           <MdMotionPhotosAuto />
         </button>
         <div className="flex gap-4">
-          <button className="text-2xl text-gray-700 bg-cyan-600 p-2 rounded-full">
+          <button
+            onClick={handleReset}
+            className="text-2xl text-gray-700 bg-cyan-600 p-2 rounded-full"
+          >
             <RiRestartFill />
           </button>
           <button
