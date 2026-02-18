@@ -23,7 +23,7 @@ const {dispatch} = useContext(CountersContext)
           {counter.count}
         </h2>
       </div>
-      <h2 className="text-cyan-600 capitalize text-2xl font-bold">{counter.name}</h2>
+      <h2 className="text-cyan-600 capitalize text-2xl font-bold select-none">{counter.name}</h2>
     </div>
   );
 };
