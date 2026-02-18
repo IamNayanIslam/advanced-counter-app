@@ -53,7 +53,7 @@ interface IProps {
 export const CountersContextProvider = ({ children }: IProps) => {
   const getInitialState = (): ICountersState => {
     const savedData = localStorage.getItem("counterState");
-    if (savedData) {
+    if (savedData !== null) {
       try {
         return JSON.parse(savedData) as ICountersState;
       } catch (error) {
