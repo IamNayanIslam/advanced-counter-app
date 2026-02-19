@@ -12,6 +12,7 @@ const EditCounterModal = ({ setEditCounterModal }: IProps) => {
   const [updatedCounter, setUpdatedCounter] = useState(countersState.counters.filter((counter)=>counter.id === countersState.counterToBeUpdatedId)[0])
   const closeEditCounterModal = () => {
     setEditCounterModal(false);
+    dispatch({type: "SET_COUNTER_TO_BE_UPDATED_ID", payload: ""})
   };
 
   const handlePropagation = (e: React.MouseEvent<HTMLDivElement>) => {

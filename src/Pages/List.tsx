@@ -5,12 +5,17 @@ import { FaPen } from "react-icons/fa";
 import { MdDelete } from "react-icons/md";
 import { useNavigate } from "react-router-dom";
 import EditCounterModal from "../Components/EditCounterModal";
+import toast from "react-hot-toast";
 
 const List = () => {
   const { countersState, dispatch } = useContext(CountersContext);
   const [editCounterModal, setEditCounterModal] = useState(false);
   const Navigate = useNavigate();
   const handleDelete = (id: string) => {
+    if(countersState.counters.length === 1){
+      return toast.error("Can't Delete all the Counters!!!")
+    }
+    
     dispatch({ type: "DELETE_COUNTER", payload: id });
   };
 

@@ -4,11 +4,13 @@ import SecondNav from "../Components/SecondNav";
 import { CountersContext } from "../Contexts/CountersContext";
 import CounterCircle from "../Components/CounterCircle";
 import AddCounterModal from "../Components/AddCounterModal";
+import EditCounterNameModal from "../Components/EditCounterNameModal";
 
 
 const Home = () => {
   const {countersState} = useContext(CountersContext);
   const [addCounterModal, setAddCounterModal] = useState(false);
+  const [editCounterNameModal, setEditCounterNameModal] = useState(false);
   /* const [isBigScreen, setIsBigScreen] = useState(false);
 
   useEffect(()=>{
@@ -21,8 +23,9 @@ const Home = () => {
     <div className="relative min-h-screen">
       <Navbar />
       <SecondNav setAddCounterModal={setAddCounterModal}/>
-      {countersState.counters.map((counter)=> counter.isActive && <CounterCircle key={counter.id} counter={counter}/>)}
+      {countersState.counters.map((counter)=> counter.isActive && <CounterCircle key={counter.id} counter={counter} setEditCounterNameModal={setEditCounterNameModal}/>)}
       {addCounterModal && <AddCounterModal setAddCounterModal={setAddCounterModal}/>}
+      {editCounterNameModal && <EditCounterNameModal setEditCounterNameModal={setEditCounterNameModal}/>}
     </div>
   );
 };
