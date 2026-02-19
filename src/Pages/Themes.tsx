@@ -11,3 +11,6 @@ const Themes = () => {
 }
 
 export default Themes
+
+//cyan-400
+//emerald-400
