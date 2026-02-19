@@ -23,6 +23,12 @@ const List = () => {
     e.stopPropagation();
   };
 
+
+  const startCounterEdit = (id: string) => {
+    setEditCounterModal((prevState)=> !prevState);
+    dispatch({type: "SET_COUNTER_TO_BE_UPDATED_ID", payload: id})
+  }
+
   const counters = countersState.counters;
   return (
     <div className="relative min-h-screen">
@@ -36,7 +42,7 @@ const List = () => {
           >
             {`${counter.name} -- ${counter.count}`}{" "}
             <div onClick={handlePropagation} className="flex gap-4">
-              <button /* onClick={} */>
+              <button onClick={()=>startCounterEdit(counter.id)}>
                 <FaPen />
               </button>
               <button onClick={() => handleDelete(counter.id)}>

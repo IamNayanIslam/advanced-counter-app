@@ -23,6 +23,7 @@ export interface ICounter {
 
 export interface ICountersState {
   counters: ICounter[];
+  counterToBeUpdatedId: string;
 }
 
 export interface IContextValue {
@@ -42,6 +43,7 @@ export const INITIAL_COUNTERS_STATE: ICountersState = {
       isEditing: false,
     },
   ],
+  counterToBeUpdatedId: "",
 };
 
 export const CountersContext = createContext<IContextValue>({

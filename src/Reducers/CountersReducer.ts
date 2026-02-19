@@ -6,7 +6,9 @@ export type CounterAction =
   | { type: "DECREMENT_COUNT" }
   | { type: "RESET_COUNT" }
   | { type: "TOGGLE_IS_ACTIVE"; payload: string }
-  | { type: "DELETE_COUNTER"; payload: string };
+  | { type: "DELETE_COUNTER"; payload: string }
+  | { type: "SET_COUNTER_TO_BE_UPDATED_ID"; payload: string }
+  | { type: "UPDATE_COUNTER"; payload: ICounter }
 
 export const CountersReducers = (
   state: ICountersState,
@@ -67,6 +69,17 @@ export const CountersReducers = (
           (counter) => counter.id !== action.payload,
         ),
       };
+    
+    case "SET_COUNTER_TO_BE_UPDATED_ID":
+      return {
+        ...state, counterToBeUpdatedId: action.payload
+      }
+    
+    case "UPDATE_COUNTER":
+      return{
+          ...state,
+          counters: state.counters.map((counter)=> counter.id === state.counterToBeUpdatedId ? action.payload : counter) 
+      }
 
     default:
       return state;
