@@ -18,6 +18,7 @@ export interface ICounter {
   isActive: boolean;
   target: number;
   lap: number;
+  isEditing: boolean;
 }
 
 export interface ICountersState {
@@ -38,6 +39,7 @@ export const INITIAL_COUNTERS_STATE: ICountersState = {
       isActive: true,
       target: 99,
       lap: 33,
+      isEditing: false,
     },
   ],
 };

@@ -15,28 +15,10 @@ const AddCounterModal = ({ setAddCounterModal }: IProps) => {
     isActive: true,
     target: 99,
     lap: 33,
+    isEditing: false,
   });
 
   const { dispatch } = useContext(CountersContext);
-
-  /* const counterOnReserve = {
-    name: "New Counter",
-    count: 0,
-    id: uuidv4(),
-    isActive: true,
-    target: 99,
-    lap: 33,
-  };
-
-  useEffect(() => {
-    if (
-      countersState.counters.length === 0 ||
-      countersState.counters.filter((counter) => counter.isActive).length === 0
-    ) {
-      dispatch({ type: "ADD_COUNTER", payload: counterOnReserve });
-    }
-    console.log(countersState);
-  }, [countersState]); */
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const value =
@@ -67,6 +49,7 @@ const AddCounterModal = ({ setAddCounterModal }: IProps) => {
     dispatch({ type: "TOGGLE_IS_ACTIVE", payload: newCounter.id });
     setNewCounter({ ...newCounter, name: "" });
     setAddCounterModal(false);
+    toast.success(`New Counter ${newCounter.name.toUpperCase()} Added!!!`);
   };
 
   const closeAddCounterModal = () => {

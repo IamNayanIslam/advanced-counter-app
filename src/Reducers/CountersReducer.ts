@@ -54,11 +54,12 @@ export const CountersReducers = (
       return {
         ...state,
         counters: state.counters.map((counter) =>
-          counter.id !== action.payload
-            ? { ...counter, isActive: false }
-            : counter,
+          counter.id === action.payload
+            ? { ...counter, isActive: true }
+            : { ...counter, isActive: false },
         ),
       };
+
     case "DELETE_COUNTER":
       return {
         ...state,
