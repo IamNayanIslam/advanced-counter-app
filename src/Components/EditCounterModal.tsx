@@ -1,16 +1,16 @@
-import { useContext, useEffect, useState } from "react";
-import { CountersContext } from "../Contexts/CountersContext";
+// import { /* useContext, */ useEffect /* useState */ } from "react";
+// import { CountersContext } from "../Contexts/CountersContext";
 
 interface IProps {
   setEditCounterModal: (value: boolean) => void;
 }
 
 const EditCounterModal = ({ setEditCounterModal }: IProps) => {
-  const { dispatch, countersState } = useContext(CountersContext);
-  const [counterToUpdate, setCounterToUpdate] = useState(
+  //   const { /* dispatch, */ countersState } = useContext(CountersContext);
+  /*  const [counterToUpdate, setCounterToUpdate] = useState(
     countersState.counters.filter((counter) => counter.isEditing)[0],
   );
-
+ */
   const closeEditCounterModal = () => {
     setEditCounterModal(false);
   };
@@ -19,9 +19,9 @@ const EditCounterModal = ({ setEditCounterModal }: IProps) => {
     e.stopPropagation();
   };
 
-  useEffect(() => {
+  /*   useEffect(() => {
     console.log(counterToUpdate);
-  });
+  }); */
 
   return (
     <div
@@ -40,7 +40,7 @@ const EditCounterModal = ({ setEditCounterModal }: IProps) => {
             </label>
             <input
               type="text"
-              value={counterToUpdate.name}
+              //   value={counterToUpdate.name}
               name="name"
               /* onChange={} */
               className=" border-b-2 border-gray-600 focus:border-cyan-600 outline-none bg-transparent"
@@ -53,7 +53,7 @@ const EditCounterModal = ({ setEditCounterModal }: IProps) => {
             </label>
             <input
               type="text"
-              value={counterToUpdate.count}
+              //   value={counterToUpdate.count}
               name="count"
               /* onChange={} */
               className=" border-b-2 border-gray-600 focus:border-cyan-600 outline-none bg-transparent"
@@ -66,7 +66,7 @@ const EditCounterModal = ({ setEditCounterModal }: IProps) => {
             </label>
             <input
               type="text"
-              value={counterToUpdate.target}
+              //   value={counterToUpdate.target}
               name="target"
               /* onChange={} */
               className=" border-b-2 border-gray-600 focus:border-cyan-600 outline-none bg-transparent"
@@ -78,7 +78,7 @@ const EditCounterModal = ({ setEditCounterModal }: IProps) => {
             </label>
             <input
               type="text"
-              value={counterToUpdate.lap}
+              //   value={counterToUpdate.lap}
               name="lap"
               /* onChange={} */
               className=" border-b-2 border-gray-600 focus:border-cyan-600 outline-none bg-transparent"
