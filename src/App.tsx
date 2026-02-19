@@ -9,7 +9,7 @@ import Usage from "./Pages/Usage";
 function App() {
   return (
     <>
-      <div className="min-h-screen bg-gray-700">
+      <div className="min-h-screen bg-slate-950">
         <BrowserRouter>
           <Routes>
             <Route path="/" element={<Home />} />

@@ -23,13 +23,13 @@ const {dispatch} = useContext(CountersContext)
     <div className="flex flex-col gap-8 justify-center items-center">
       <div
         onClick={handleIncrement}
-        className="w-[300px] h-[300px] bg-cyan-600 rounded-full flex justify-center items-center cursor-pointer"
+        className="w-[300px] h-[300px] bg-cyan-400 rounded-full flex justify-center items-center cursor-pointer"
       >
-        <h2 className="text-[120px] font-bold text-center text-gray-700 select-none">
+        <h2 className="text-[120px] font-bold text-center text-slate-950 select-none">
           {counter.count}
         </h2>
       </div>
-      <h2 onDoubleClick={()=>handleNameEdit(counter.id)} className="text-cyan-600 capitalize text-2xl font-bold select-none cursor-pointer">{counter.name}</h2>
+      <h2 onDoubleClick={()=>handleNameEdit(counter.id)} className="text-cyan-400 capitalize text-2xl font-bold select-none cursor-pointer">{counter.name}</h2>
     </div>
   );
 };

@@ -42,7 +42,7 @@ const List = () => {
         {counters.map((counter) => (
           <li
             onClick={() => selectCounter(counter.id)}
-            className={`flex gap-4 items-center justify-between p-4 w-[96%] rounded-md select-none ${counter.isActive ? "bg-cyan-600" : "bg-slate-400"}`}
+            className={`flex gap-4 items-center justify-between p-4 w-[96%] rounded-md select-none ${counter.isActive ? "bg-cyan-400" : "bg-slate-400"}`}
             key={counter.id}
           >
             {`${counter.name} -- ${counter.count}`}{" "}

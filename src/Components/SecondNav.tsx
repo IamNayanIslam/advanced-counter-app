@@ -22,25 +22,25 @@ const SecondNav = ({ setAddCounterModal }: IProps) => {
   return (
     <div>
       <div className="flex justify-between items-center bg-transparent px-4 py-4 mb-10">
-        <button className="text-4xl text-gray-700 bg-cyan-600 p-2 rounded-full">
+        <button className="text-4xl text-slate-950 bg-cyan-400 p-2 rounded-full">
           <MdMotionPhotosAuto />
         </button>
         <div className="flex gap-4">
           <button
             onClick={handleReset}
-            className="text-2xl text-gray-700 bg-cyan-600 p-2 rounded-full"
+            className="text-2xl text-slate-950 bg-cyan-400 p-2 rounded-full"
           >
             <RiRestartFill />
           </button>
           <button
             onClick={handleDecrement}
-            className="text-2xl text-gray-700 bg-cyan-600 p-2 rounded-full"
+            className="text-2xl text-slate-950 bg-cyan-400 p-2 rounded-full"
           >
             <CiCircleMinus />
           </button>
           <button
             onClick={() => setAddCounterModal(true)}
-            className="text-2xl text-gray-700 bg-cyan-600 p-2 rounded-full"
+            className="text-2xl text-slate-950 bg-cyan-400 p-2 rounded-full"
           >
             <MdPlaylistAddCircle />
           </button>

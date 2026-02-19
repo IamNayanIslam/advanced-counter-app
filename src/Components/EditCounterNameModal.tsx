@@ -56,11 +56,11 @@ const EditCounterNameModal = ({setEditCounterNameModal}: IProps) => {
               value={updatedCounter.name}
               name="name"
               onChange={handleChange} 
-              className=" border-b-2 border-gray-600 focus:border-cyan-600 outline-none bg-transparent"
+              className=" border-b-2 border-gray-600 focus:border-cyan-400 outline-none bg-transparent"
             />
           </div>
 
-          <button className="bg-cyan-600 text-white w-1/4 px-2 py-1 rounded-full self-center">
+          <button className="bg-cyan-400 text-white w-1/4 px-2 py-1 rounded-full self-center">
             Save
           </button>
         </form>
