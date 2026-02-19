@@ -2,6 +2,7 @@ import { useContext, useState } from "react";
 import toast from "react-hot-toast";
 import { v4 as uuidv4 } from "uuid";
 import { CountersContext } from "../Contexts/CountersContext";
+import { ThemesContext } from "../Contexts/ThemseContext";
 
 interface IProps {
   setAddCounterModal: (value: boolean) => void;
@@ -19,6 +20,7 @@ const AddCounterModal = ({ setAddCounterModal }: IProps) => {
   });
 
   const { dispatch } = useContext(CountersContext);
+  const { themesState } = useContext(ThemesContext);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const value =
@@ -81,7 +83,7 @@ const AddCounterModal = ({ setAddCounterModal }: IProps) => {
               value={newCounter.name}
               name="name"
               onChange={handleChange}
-              className=" border-b-2 border-gray-600 focus:border-cyan-400 outline-none bg-transparent"
+              className={`border-b-2 border-slate-950 focus:border-${themesState.theme}-400 outline-none bg-transparent`}
             />
           </div>
           <div className="flex flex-col">
@@ -93,7 +95,7 @@ const AddCounterModal = ({ setAddCounterModal }: IProps) => {
               value={newCounter.target}
               name="target"
               onChange={handleChange}
-              className=" border-b-2 border-gray-600 focus:border-cyan-400 outline-none bg-transparent"
+              className={`border-b-2 border-slate-950 focus:border-${themesState.theme}-400 outline-none bg-transparent`}
             />
           </div>
           <div className="flex flex-col">
@@ -105,10 +107,12 @@ const AddCounterModal = ({ setAddCounterModal }: IProps) => {
               value={newCounter.lap}
               name="lap"
               onChange={handleChange}
-              className=" border-b-2 border-gray-600 focus:border-cyan-400 outline-none bg-transparent"
+              className={`border-b-2 border-slate-950 focus:border-${themesState.theme}-400 outline-none bg-transparent`}
             />
           </div>
-          <button className="bg-cyan-400 text-white w-1/4 px-2 py-1 rounded-full self-center">
+          <button
+            className={`bg-${themesState.theme}-400 text-white w-1/4 px-2 py-1 rounded-full self-center`}
+          >
             Save
           </button>
         </form>

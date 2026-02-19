@@ -4,6 +4,7 @@ import { MdPlaylistAddCircle } from "react-icons/md";
 import { MdMotionPhotosAuto } from "react-icons/md";
 import { useContext } from "react";
 import { CountersContext } from "../Contexts/CountersContext";
+import { ThemesContext } from "../Contexts/ThemseContext";
 
 interface IProps {
   setAddCounterModal: (value: boolean) => void;
@@ -11,6 +12,7 @@ interface IProps {
 
 const SecondNav = ({ setAddCounterModal }: IProps) => {
   const { dispatch } = useContext(CountersContext);
+  const { themesState } = useContext(ThemesContext);
 
   const handleDecrement = (): void => {
     dispatch({ type: "DECREMENT_COUNT" });
@@ -22,25 +24,27 @@ const SecondNav = ({ setAddCounterModal }: IProps) => {
   return (
     <div>
       <div className="flex justify-between items-center bg-transparent px-4 py-4 mb-10">
-        <button className="text-4xl text-slate-950 bg-cyan-400 p-2 rounded-full">
+        <button
+          className={`text-4xl text-slate-950 bg-${themesState.theme}-400 p-2 rounded-full`}
+        >
           <MdMotionPhotosAuto />
         </button>
         <div className="flex gap-4">
           <button
             onClick={handleReset}
-            className="text-2xl text-slate-950 bg-cyan-400 p-2 rounded-full"
+            className={`text-2xl text-slate-950 bg-${themesState.theme}-400 p-2 rounded-full`}
           >
             <RiRestartFill />
           </button>
           <button
             onClick={handleDecrement}
-            className="text-2xl text-slate-950 bg-cyan-400 p-2 rounded-full"
+            className={`text-2xl text-slate-950 bg-${themesState.theme}-400 p-2 rounded-full`}
           >
             <CiCircleMinus />
           </button>
           <button
             onClick={() => setAddCounterModal(true)}
-            className="text-2xl text-slate-950 bg-cyan-400 p-2 rounded-full"
+            className={`text-2xl text-slate-950 bg-${themesState.theme}-400 p-2 rounded-full`}
           >
             <MdPlaylistAddCircle />
           </button>

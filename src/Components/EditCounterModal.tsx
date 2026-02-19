@@ -1,30 +1,34 @@
 import { useContext, useState } from "react";
 import { CountersContext } from "../Contexts/CountersContext";
 import toast from "react-hot-toast";
-
+import { ThemesContext } from "../Contexts/ThemseContext";
 
 interface IProps {
   setEditCounterModal: (value: boolean) => void;
 }
 
 const EditCounterModal = ({ setEditCounterModal }: IProps) => {
-  const{countersState, dispatch} = useContext(CountersContext)
-  const [updatedCounter, setUpdatedCounter] = useState(countersState.counters.filter((counter)=>counter.id === countersState.counterToBeUpdatedId)[0])
+  const { countersState, dispatch } = useContext(CountersContext);
+  const { themesState } = useContext(ThemesContext);
+  const [updatedCounter, setUpdatedCounter] = useState(
+    countersState.counters.filter(
+      (counter) => counter.id === countersState.counterToBeUpdatedId,
+    )[0],
+  );
   const closeEditCounterModal = () => {
     setEditCounterModal(false);
-    dispatch({type: "SET_COUNTER_TO_BE_UPDATED_ID", payload: ""})
+    dispatch({ type: "SET_COUNTER_TO_BE_UPDATED_ID", payload: "" });
   };
 
   const handlePropagation = (e: React.MouseEvent<HTMLDivElement>) => {
     e.stopPropagation();
   };
 
- 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement>)=>{
-    setUpdatedCounter({...updatedCounter, [e.target.name]: e.target.value})
-  }
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setUpdatedCounter({ ...updatedCounter, [e.target.name]: e.target.value });
+  };
 
-  const handleCounterUpdate = (e: React.FormEvent<HTMLFormElement>) =>{
+  const handleCounterUpdate = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
     if (updatedCounter.name.trim() === "") {
@@ -43,10 +47,10 @@ const EditCounterModal = ({ setEditCounterModal }: IProps) => {
       return toast.error("Lap can't be empty");
     }
 
-    dispatch({type: "UPDATE_COUNTER", payload: updatedCounter})
-    dispatch({type: "SET_COUNTER_TO_BE_UPDATED_ID", payload: ""})
-    setEditCounterModal(false)
-  }
+    dispatch({ type: "UPDATE_COUNTER", payload: updatedCounter });
+    dispatch({ type: "SET_COUNTER_TO_BE_UPDATED_ID", payload: "" });
+    setEditCounterModal(false);
+  };
   return (
     <div
       onClick={closeEditCounterModal}
@@ -66,8 +70,8 @@ const EditCounterModal = ({ setEditCounterModal }: IProps) => {
               type="text"
               value={updatedCounter.name}
               name="name"
-              onChange={handleChange} 
-              className=" border-b-2 border-gray-600 focus:border-cyan-400 outline-none bg-transparent"
+              onChange={handleChange}
+              className={`border-b-2 border-slate-600 focus:border-${themesState.theme}-400 outline-none bg-transparent`}
             />
           </div>
 
@@ -77,10 +81,10 @@ const EditCounterModal = ({ setEditCounterModal }: IProps) => {
             </label>
             <input
               type="text"
-                value={updatedCounter.count}
+              value={updatedCounter.count}
               name="count"
-              onChange={handleChange} 
-              className=" border-b-2 border-gray-600 focus:border-cyan-400 outline-none bg-transparent"
+              onChange={handleChange}
+              className={`border-b-2 border-slate-600 focus:border-${themesState.theme}-400 outline-none bg-transparent`}
             />
           </div>
 
@@ -90,10 +94,10 @@ const EditCounterModal = ({ setEditCounterModal }: IProps) => {
             </label>
             <input
               type="text"
-                value={updatedCounter.target}
+              value={updatedCounter.target}
               name="target"
-               onChange={handleChange}
-              className=" border-b-2 border-gray-600 focus:border-cyan-400 outline-none bg-transparent"
+              onChange={handleChange}
+              className={`border-b-2 border-slate-600 focus:border-${themesState.theme}-400 outline-none bg-transparent`}
             />
           </div>
           <div className="flex flex-col">
@@ -102,13 +106,15 @@ const EditCounterModal = ({ setEditCounterModal }: IProps) => {
             </label>
             <input
               type="text"
-                value={updatedCounter.lap}
+              value={updatedCounter.lap}
               name="lap"
               onChange={handleChange}
-              className=" border-b-2 border-gray-600 focus:border-cyan-400 outline-none bg-transparent"
+              className={`border-b-2 border-slate-600 focus:border-${themesState.theme}-400 outline-none bg-transparent`}
             />
           </div>
-          <button className="bg-cyan-400 text-white w-1/4 px-2 py-1 rounded-full self-center">
+          <button
+            className={`bg-${themesState.theme}-400 text-white w-1/4 px-2 py-1 rounded-full self-center`}
+          >
             Save
           </button>
         </form>

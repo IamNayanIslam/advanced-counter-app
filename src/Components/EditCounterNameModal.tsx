@@ -1,41 +1,44 @@
 import { useContext, useState } from "react";
 import { CountersContext } from "../Contexts/CountersContext";
 import toast from "react-hot-toast";
-
+import { ThemesContext } from "../Contexts/ThemseContext";
 
 interface IProps {
   setEditCounterNameModal: (value: boolean) => void;
 }
 
-const EditCounterNameModal = ({setEditCounterNameModal}: IProps) => {
-
-    const{countersState, dispatch} = useContext(CountersContext)
-  const [updatedCounter, setUpdatedCounter] = useState(countersState.counters.filter((counter)=>counter.id === countersState.counterToBeUpdatedId)[0])
+const EditCounterNameModal = ({ setEditCounterNameModal }: IProps) => {
+  const { countersState, dispatch } = useContext(CountersContext);
+  const { themesState } = useContext(ThemesContext);
+  const [updatedCounter, setUpdatedCounter] = useState(
+    countersState.counters.filter(
+      (counter) => counter.id === countersState.counterToBeUpdatedId,
+    )[0],
+  );
   const closeEditCounterNameModal = () => {
     setEditCounterNameModal(false);
-     dispatch({type: "SET_COUNTER_TO_BE_UPDATED_ID", payload: ""})
+    dispatch({ type: "SET_COUNTER_TO_BE_UPDATED_ID", payload: "" });
   };
 
   const handlePropagation = (e: React.MouseEvent<HTMLDivElement>) => {
     e.stopPropagation();
   };
 
- 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement>)=>{
-    setUpdatedCounter({...updatedCounter, [e.target.name]: e.target.value})
-  }
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setUpdatedCounter({ ...updatedCounter, [e.target.name]: e.target.value });
+  };
 
-  const handleCounterUpdate = (e: React.FormEvent<HTMLFormElement>) =>{
+  const handleCounterUpdate = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
     if (updatedCounter.name.trim() === "") {
       return toast.error("Name can't be empty!!!");
     }
 
-    dispatch({type: "UPDATE_COUNTER", payload: updatedCounter})
-    dispatch({type: "SET_COUNTER_TO_BE_UPDATED_ID", payload: ""})
-    setEditCounterNameModal(false)
-  }
+    dispatch({ type: "UPDATE_COUNTER", payload: updatedCounter });
+    dispatch({ type: "SET_COUNTER_TO_BE_UPDATED_ID", payload: "" });
+    setEditCounterNameModal(false);
+  };
   return (
     <div
       onClick={closeEditCounterNameModal}
@@ -55,18 +58,20 @@ const EditCounterNameModal = ({setEditCounterNameModal}: IProps) => {
               type="text"
               value={updatedCounter.name}
               name="name"
-              onChange={handleChange} 
-              className=" border-b-2 border-gray-600 focus:border-cyan-400 outline-none bg-transparent"
+              onChange={handleChange}
+              className={`border-b-2 border-slate-950 focus:border-${themesState.theme}-400 outline-none bg-transparent`}
             />
           </div>
 
-          <button className="bg-cyan-400 text-white w-1/4 px-2 py-1 rounded-full self-center">
+          <button
+            className={`bg-${themesState.theme}-400 text-white w-1/4 px-2 py-1 rounded-full self-center`}
+          >
             Save
           </button>
         </form>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default EditCounterNameModal
+export default EditCounterNameModal;
