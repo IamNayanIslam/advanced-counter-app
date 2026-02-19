@@ -11,13 +11,48 @@ const List = () => {
   const { countersState, dispatch } = useContext(CountersContext);
   const [editCounterModal, setEditCounterModal] = useState(false);
   const Navigate = useNavigate();
+
+
   const handleDelete = (id: string) => {
-    if(countersState.counters.length === 1){
-      return toast.error("Can't Delete all the Counters!!!")
+  
+  if (countersState.counters.length === 1) {
+    return toast.error("Can't Delete all the Counters!!!");
+  }
+
+
+  toast((t) => (
+    <div className="flex flex-col gap-3 p-1">
+      <p className="text-sm font-semibold text-gray-800">
+        Are you sure you want to delete?
+      </p>
+      <div className="flex justify-end gap-2">
+        <button
+          onClick={() => toast.dismiss(t.id)}
+          className="px-3 py-1 text-xs font-medium bg-gray-100 text-gray-600 rounded-md hover:bg-gray-200 transition-colors"
+        >
+          Cancel
+        </button>
+        <button
+          onClick={() => {
+            dispatch({ type: "DELETE_COUNTER", payload: id });
+            toast.dismiss(t.id);
+            toast.success("Counter deleted!");
+          }}
+          className="px-3 py-1 text-xs font-medium bg-red-500 text-white rounded-md hover:bg-red-600 transition-colors shadow-sm"
+        >
+          Delete
+        </button>
+      </div>
+    </div>
+  ), {
+    duration: 5000,
+    position: "top-center",
+    style: {
+      minWidth: "250px",
+      border: "1px solid #e2e8f0",
     }
-    
-    dispatch({ type: "DELETE_COUNTER", payload: id });
-  };
+  });
+};
 
   const selectCounter = (id: string) => {
     dispatch({ type: "TOGGLE_IS_ACTIVE", payload: id });
