@@ -7,7 +7,7 @@ import { ThemesContext } from "../Contexts/ThemseContext";
 interface IProps {
   setAddCounterModal: (value: boolean) => void;
 }
-const counterAddedSound = new Audio("/counter-added-mp3");
+const counterAddedSound = new Audio("/counter-added.mp3");
 
 const AddCounterModal = ({ setAddCounterModal }: IProps) => {
   const [newCounter, setNewCounter] = useState({
@@ -20,7 +20,7 @@ const AddCounterModal = ({ setAddCounterModal }: IProps) => {
     isEditing: false,
   });
 
-  const playClickSound = () => {
+  const playAddCounterSound = () => {
     // আগের সাউন্ড শেষ হওয়ার আগেই যদি আবার ক্লিক পড়ে, তবে এটি রিসেট করবে
     counterAddedSound.currentTime = 0;
     counterAddedSound
@@ -60,7 +60,7 @@ const AddCounterModal = ({ setAddCounterModal }: IProps) => {
     dispatch({ type: "TOGGLE_IS_ACTIVE", payload: newCounter.id });
     setNewCounter({ ...newCounter, name: "" });
     setAddCounterModal(false);
-    playClickSound();
+    playAddCounterSound();
     toast.success(`New Counter ${newCounter.name.toUpperCase()} Added!!!`);
   };
 
