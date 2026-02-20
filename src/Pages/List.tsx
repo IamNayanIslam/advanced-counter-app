@@ -8,12 +8,21 @@ import EditCounterModal from "../Components/EditCounterModal";
 
 import toast, { Toaster } from "react-hot-toast";
 import { ThemesContext } from "../Contexts/ThemseContext";
+import { SettingsContext } from "../Contexts/SettingsContext";
+
+const deleteSound = new Audio("/delete.mp3");
 
 const List = () => {
   const { countersState, dispatch } = useContext(CountersContext);
   const { themesState } = useContext(ThemesContext);
+  const { settingsState } = useContext(SettingsContext);
   const [editCounterModal, setEditCounterModal] = useState(false);
   const Navigate = useNavigate();
+
+  const deleteCounterSound = () => {
+    deleteSound.currentTime = 0;
+    deleteSound.play().catch((error) => console.log("Audio error:", error));
+  };
 
   const handleDelete = (id: string) => {
     if (countersState.counters.length === 1) {
@@ -37,12 +46,13 @@ const List = () => {
             <button
               onClick={() => {
                 toast.remove();
-
+                if (settingsState.sound) {
+                  deleteCounterSound();
+                }
                 dispatch({ type: "DELETE_COUNTER", payload: id });
-
                 toast.success("Counter deleted!", {
                   duration: 2000,
-                  position: "bottom-center",
+                  position: "top-center",
                 });
               }}
               className="px-3 py-1 text-xs font-medium bg-red-500 text-white rounded-md hover:bg-red-600 transition-colors shadow-sm"

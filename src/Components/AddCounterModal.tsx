@@ -21,7 +21,6 @@ const AddCounterModal = ({ setAddCounterModal }: IProps) => {
   });
 
   const playAddCounterSound = () => {
-    // আগের সাউন্ড শেষ হওয়ার আগেই যদি আবার ক্লিক পড়ে, তবে এটি রিসেট করবে
     counterAddedSound.currentTime = 0;
     counterAddedSound
       .play()
