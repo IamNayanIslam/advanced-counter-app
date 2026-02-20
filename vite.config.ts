@@ -16,6 +16,7 @@ export default defineConfig({
         "click.wav",
         "cool-interface-click-tone-2568.wav",
         "counter-added.mp3",
+        "delete.mp3",
       ],
       manifest: {
         name: "Tasbih Pro - Md. Nayan Islam",

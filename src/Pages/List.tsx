@@ -45,10 +45,10 @@ const List = () => {
             </button>
             <button
               onClick={() => {
-                toast.remove();
                 if (settingsState.sound) {
                   deleteCounterSound();
                 }
+                toast.remove();
                 dispatch({ type: "DELETE_COUNTER", payload: id });
                 toast.success("Counter deleted!", {
                   duration: 2000,
