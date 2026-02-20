@@ -35,16 +35,20 @@ const List = () => {
             </button>
             <button
               onClick={() => {
+                // ১. ডিসমিস আগে করুন
                 toast.dismiss(t.id);
 
+                // ২. ডিলিট অ্যাকশন
                 dispatch({ type: "DELETE_COUNTER", payload: id });
 
+                // ৩. সাকসেস টোস্ট আলাদা আইডি দিয়ে ডাকুন
                 setTimeout(() => {
                   toast.success("Counter deleted!", {
+                    id: "delete-success", // ফিক্সড আইডি দিলে এটি হ্যাং হবে না
                     duration: 2000,
                     position: "bottom-center",
                   });
-                }, 100);
+                }, 200); // গ্যাপ একটু বাড়িয়ে ২০০ করলাম
               }}
               className="px-3 py-1 text-xs font-medium bg-red-500 text-white rounded-md hover:bg-red-600 transition-colors shadow-sm"
             >
