@@ -42,7 +42,7 @@ const List = () => {
                 setTimeout(() => {
                   toast.success("Counter deleted!", {
                     duration: 2000,
-                    position: "top-center",
+                    position: "bottom-center",
                   });
                 }, 100);
               }}
