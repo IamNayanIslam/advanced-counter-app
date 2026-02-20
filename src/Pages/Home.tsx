@@ -2,7 +2,7 @@ import { useContext, useState, useEffect } from "react";
 import Navbar from "../Components/Navbar";
 import SecondNav from "../Components/SecondNav";
 import { CountersContext } from "../Contexts/CountersContext";
-import CounterCircle from "../Components/CounterCircle";
+import CounterCircle from "../Components/CounterComponent";
 import AddCounterModal from "../Components/AddCounterModal";
 import EditCounterNameModal from "../Components/EditCounterNameModal";
 import HomeFooter from "../Components/HomeFooter";

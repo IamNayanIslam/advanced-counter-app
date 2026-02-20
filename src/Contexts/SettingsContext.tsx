@@ -1,5 +1,6 @@
 import {
   createContext,
+  useEffect,
   useReducer,
   type Dispatch,
   type ReactNode,
@@ -36,12 +37,29 @@ export const SettingsContext = createContext<IContextValues>({
 });
 
 export const SettingsContextProvider = ({ children }: IProps) => {
+  const getInitialState = (initialState: ISettingsState) => {
+    const savedSettings = localStorage.getItem("settingsState");
+
+    if (savedSettings === null) return initialState;
+    try {
+      return JSON.parse(savedSettings) as ISettingsState;
+    } catch (error) {
+      console.error("Failed to get saved settings:", error);
+      return initialState;
+    }
+  };
+
   const [settingsState, settingsDispatch] = useReducer(
     SettingsReducer,
     INITIAL_SETINGS_STATE,
+    getInitialState,
   );
 
   const values = { settingsState, settingsDispatch };
+
+  useEffect(() => {
+    localStorage.setItem("settingsState", JSON.stringify(settingsState));
+  });
 
   return (
     <SettingsContext.Provider value={values}>

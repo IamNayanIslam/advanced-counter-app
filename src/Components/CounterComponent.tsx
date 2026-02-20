@@ -10,18 +10,17 @@ interface IProps {
 
 const coolInterFaceClickTone = new Audio("/cool-interface-click-tone-2568.wav");
 
-const CounterCircle = ({ counter, setEditCounterNameModal }: IProps) => {
+const CounterComponent = ({ counter, setEditCounterNameModal }: IProps) => {
   const { dispatch } = useContext(CountersContext);
   const { themesState } = useContext(ThemesContext);
   const { settingsState } = useContext(SettingsContext);
 
-  // const hardTypeWritterSound = new Audio("/hard-typewriter-click-1119.wav");
   const getShapeClasses = () => {
     switch (settingsState.buttonShape) {
       case "circle":
         return "rounded-full";
       case "cubical":
-        return "rounded-3xl"; // কিউবিক্যাল এর জন্য স্লাইটলি রাউন্ডেড বক্স
+        return "rounded-3xl";
       case "hexagon":
         return "clip-hexagon";
       default:
@@ -29,7 +28,6 @@ const CounterCircle = ({ counter, setEditCounterNameModal }: IProps) => {
     }
   };
   const playClickSound = () => {
-    // আগের সাউন্ড শেষ হওয়ার আগেই যদি আবার ক্লিক পড়ে, তবে এটি রিসেট করবে
     coolInterFaceClickTone.currentTime = 0;
     coolInterFaceClickTone
       .play()
@@ -38,7 +36,6 @@ const CounterCircle = ({ counter, setEditCounterNameModal }: IProps) => {
 
   const triggerVibration = () => {
     if ("vibrate" in navigator) {
-      // ৫০ মিলিসেকেন্ডের একটি ছোট ভাইব্রেশন (ট্যাপ ফিডব্যাক)
       navigator.vibrate(50);
     }
   };
@@ -77,4 +74,4 @@ const CounterCircle = ({ counter, setEditCounterNameModal }: IProps) => {
   );
 };
 
-export default CounterCircle;
+export default CounterComponent;
