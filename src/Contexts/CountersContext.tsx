@@ -67,6 +67,7 @@ export const CountersContextProvider = ({ children }: IProps) => {
       return initialState;
     }
   };
+
   const [countersState, dispatch] = useReducer(
     CountersReducers,
     INITIAL_COUNTERS_STATE,
