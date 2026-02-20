@@ -5,7 +5,8 @@ import { FaPen } from "react-icons/fa";
 import { MdDelete } from "react-icons/md";
 import { useNavigate } from "react-router-dom";
 import EditCounterModal from "../Components/EditCounterModal";
-import toast from "react-hot-toast";
+
+import toast, { Toaster } from "react-hot-toast";
 import { ThemesContext } from "../Contexts/ThemseContext";
 
 const List = () => {
@@ -73,6 +74,7 @@ const List = () => {
   const counters = countersState.counters;
   return (
     <div className="relative min-h-screen">
+      <Toaster />
       <Navbar />
       <ul className="flex flex-col items-center gap-4 mt-8">
         {counters.map((counter) => (
