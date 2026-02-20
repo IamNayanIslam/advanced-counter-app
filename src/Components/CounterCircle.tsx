@@ -16,7 +16,18 @@ const CounterCircle = ({ counter, setEditCounterNameModal }: IProps) => {
   const { settingsState } = useContext(SettingsContext);
 
   // const hardTypeWritterSound = new Audio("/hard-typewriter-click-1119.wav");
-
+  const getShapeClasses = () => {
+    switch (settingsState.buttonShape) {
+      case "circle":
+        return "rounded-full";
+      case "cubical":
+        return "rounded-3xl"; // কিউবিক্যাল এর জন্য স্লাইটলি রাউন্ডেড বক্স
+      case "hexagon":
+        return "clip-hexagon";
+      default:
+        return "rounded-full";
+    }
+  };
   const playClickSound = () => {
     // আগের সাউন্ড শেষ হওয়ার আগেই যদি আবার ক্লিক পড়ে, তবে এটি রিসেট করবে
     coolInterFaceClickTone.currentTime = 0;
@@ -46,12 +57,16 @@ const CounterCircle = ({ counter, setEditCounterNameModal }: IProps) => {
     <div className="flex flex-col gap-8 justify-center items-center">
       <div
         onClick={handleIncrement}
-        className={`w-[300px] h-[300px] rounded-full flex justify-center items-center cursor-pointer bg-${themesState.theme}-400`}
+        className={`w-[300px] h-[300px] flex justify-center items-center cursor-pointer transition-all duration-300 
+          bg-${themesState.theme}-400 
+          ${getShapeClasses()} 
+          active:scale-95 shadow-xl`}
       >
         <h2 className="text-[120px] font-bold text-center text-slate-950 select-none">
           {counter.count}
         </h2>
       </div>
+
       <h2
         onDoubleClick={() => handleNameEdit(counter.id)}
         className={`capitalize text-2xl font-bold select-none cursor-pointer text-${themesState.theme}-400`}
