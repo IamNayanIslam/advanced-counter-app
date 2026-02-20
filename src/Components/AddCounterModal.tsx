@@ -19,6 +19,16 @@ const AddCounterModal = ({ setAddCounterModal }: IProps) => {
     isEditing: false,
   });
 
+  const counterAddedSound = new Audio("/counter-added-mp3.mpeg");
+
+  const playClickSound = () => {
+    // আগের সাউন্ড শেষ হওয়ার আগেই যদি আবার ক্লিক পড়ে, তবে এটি রিসেট করবে
+    counterAddedSound.currentTime = 0;
+    counterAddedSound
+      .play()
+      .catch((error) => console.log("Audio error:", error));
+  };
+
   const { dispatch } = useContext(CountersContext);
   const { themesState } = useContext(ThemesContext);
 
@@ -51,6 +61,7 @@ const AddCounterModal = ({ setAddCounterModal }: IProps) => {
     dispatch({ type: "TOGGLE_IS_ACTIVE", payload: newCounter.id });
     setNewCounter({ ...newCounter, name: "" });
     setAddCounterModal(false);
+    playClickSound();
     toast.success(`New Counter ${newCounter.name.toUpperCase()} Added!!!`);
   };
 
