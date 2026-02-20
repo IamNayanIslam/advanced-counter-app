@@ -11,12 +11,15 @@ const CounterCircle = ({ counter, setEditCounterNameModal }: IProps) => {
   const { dispatch } = useContext(CountersContext);
   const { themesState } = useContext(ThemesContext);
 
-  const hardTypeWritterSound = new Audio("/hard-typewriter-click-1119.wav");
+  // const hardTypeWritterSound = new Audio("/hard-typewriter-click-1119.wav");
+  const coolInterFaceClickTone = new Audio(
+    "/cool-interface-click-tone-2568.wav",
+  );
 
   const playClickSound = () => {
     // আগের সাউন্ড শেষ হওয়ার আগেই যদি আবার ক্লিক পড়ে, তবে এটি রিসেট করবে
-    hardTypeWritterSound.currentTime = 0;
-    hardTypeWritterSound
+    coolInterFaceClickTone.currentTime = 0;
+    coolInterFaceClickTone
       .play()
       .catch((error) => console.log("Audio error:", error));
   };
