@@ -7,6 +7,7 @@ import { ThemesContext } from "../Contexts/ThemseContext";
 interface IProps {
   setAddCounterModal: (value: boolean) => void;
 }
+const counterAddedSound = new Audio("/counter-added-mp3");
 
 const AddCounterModal = ({ setAddCounterModal }: IProps) => {
   const [newCounter, setNewCounter] = useState({
@@ -18,8 +19,6 @@ const AddCounterModal = ({ setAddCounterModal }: IProps) => {
     lap: 33,
     isEditing: false,
   });
-
-  const counterAddedSound = new Audio("/counter-added-mp3");
 
   const playClickSound = () => {
     // আগের সাউন্ড শেষ হওয়ার আগেই যদি আবার ক্লিক পড়ে, তবে এটি রিসেট করবে
