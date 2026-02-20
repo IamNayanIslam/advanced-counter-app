@@ -19,7 +19,7 @@ const AddCounterModal = ({ setAddCounterModal }: IProps) => {
     isEditing: false,
   });
 
-  const counterAddedSound = new Audio("/counter-added-mp3.mpeg");
+  const counterAddedSound = new Audio("/counter-added-mp3");
 
   const playClickSound = () => {
     // আগের সাউন্ড শেষ হওয়ার আগেই যদি আবার ক্লিক পড়ে, তবে এটি রিসেট করবে

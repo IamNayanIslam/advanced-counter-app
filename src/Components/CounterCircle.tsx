@@ -32,9 +32,9 @@ const CounterCircle = ({ counter, setEditCounterNameModal }: IProps) => {
   };
 
   const handleIncrement = () => {
-    dispatch({ type: "INCREMENT_COUNT", payload: counter.id });
     triggerVibration();
     playClickSound();
+    dispatch({ type: "INCREMENT_COUNT", payload: counter.id });
   };
 
   const handleNameEdit = (id: string) => {
