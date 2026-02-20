@@ -1,5 +1,4 @@
 export type CounterShape = "circle" | "cubical" | "hexagon";
-export type Language = "bengali" | "english";
 
 export interface ISettingsState {
   sound: boolean;
@@ -9,11 +8,9 @@ export interface ISettingsState {
   remainingCountDisplay: boolean;
   volumeButtonControl: boolean;
   buttonShape: CounterShape;
-  language: Language;
 }
 
 export type SettingsAction =
-  | { type: "SET_LANGUAGE"; payload: Language }
   | { type: "SET_SHAPE"; payload: CounterShape }
   | { type: "TOGGLE_SOUND" }
   | { type: "TOGGLE_VIBRATION" }
@@ -51,11 +48,6 @@ export const SettingsReducer = (
       return {
         ...state,
         minusButton: !state.minusButton,
-      };
-    case "SET_LANGUAGE":
-      return {
-        ...state,
-        language: action.payload,
       };
     case "SET_SHAPE":
       return {

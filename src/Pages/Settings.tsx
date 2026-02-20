@@ -89,30 +89,6 @@ const Settings = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           <div className="space-y-3">
             <label className="text-xs font-bold text-gray-500 uppercase tracking-widest ml-2">
-              Language
-            </label>
-            <div className="relative">
-              <select
-                value={settingsState.language}
-                onChange={(e) =>
-                  settingsDispatch({
-                    type: "SET_LANGUAGE",
-                    payload: e.target.value as Language,
-                  })
-                }
-                className={`w-full bg-slate-800/60 border border-slate-700 p-4 rounded-2xl appearance-none outline-none focus:border-${themesState.theme}-400 transition-all font-semibold`}
-              >
-                <option value="english">English</option>
-                <option value="bengali">Bengali</option>
-              </select>
-              <div className="absolute right-5 top-1/2 -translate-y-1/2 pointer-events-none text-gray-400">
-                ▼
-              </div>
-            </div>
-          </div>
-
-          <div className="space-y-3">
-            <label className="text-xs font-bold text-gray-500 uppercase tracking-widest ml-2">
               Button Shape
             </label>
             <div className="relative">

@@ -1,13 +1,7 @@
 import { useContext } from "react";
 import Navbar from "../Components/Navbar";
 import { ThemesContext } from "../Contexts/ThemseContext";
-import {
-  FaCode,
-  FaTools,
-  FaUserCircle,
-  FaGithub,
-  FaTerminal,
-} from "react-icons/fa";
+import { FaCode, FaTools, FaGithub, FaTerminal } from "react-icons/fa";
 
 const About = () => {
   const { themesState } = useContext(ThemesContext);
@@ -17,7 +11,6 @@ const About = () => {
     "Dynamic Theme System with 6 Premium Colors",
     "Volume Button Control for Seamless Counting",
     "Customizable Counter Shapes (Hexagon, Circle, Cubical)",
-    "Bilingual Support (English & Bengali)",
     "Haptic Feedback & Interactive Sound Effects",
   ];
 

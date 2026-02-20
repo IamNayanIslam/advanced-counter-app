@@ -4,7 +4,7 @@ import List from "./Pages/List";
 import Themes from "./Pages/Themes";
 import Settings from "./Pages/Settings";
 import Error from "./Pages/Error";
-import Usage from "./Pages/Usage";
+
 import About from "./Pages/about";
 
 function App() {
@@ -15,7 +15,6 @@ function App() {
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/list" element={<List />} />
-            <Route path="/usage" element={<Usage />} />
             <Route path="/themes" element={<Themes />} />
             <Route path="/settings" element={<Settings />} />
             <Route path="/about" element={<About />} />

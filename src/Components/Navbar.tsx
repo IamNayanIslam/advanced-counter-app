@@ -1,6 +1,6 @@
 import { IoMdHome } from "react-icons/io";
 import { FaRegListAlt } from "react-icons/fa";
-import { VscGraph } from "react-icons/vsc";
+import { GrStatusInfo } from "react-icons/gr";
 import { IoIosColorPalette } from "react-icons/io";
 import { MdSettingsApplications } from "react-icons/md";
 import { NavLink } from "react-router-dom";
@@ -20,9 +20,9 @@ const Navbar = () => {
   const navItems = [
     { to: "/", icon: <IoMdHome />, label: "Home" },
     { to: "/list", icon: <FaRegListAlt />, label: "List" },
-    { to: "/usage", icon: <VscGraph />, label: "Stats" },
     { to: "/themes", icon: <IoIosColorPalette />, label: "Themes" },
     { to: "/settings", icon: <MdSettingsApplications />, label: "Settings" },
+    { to: "/about", icon: <GrStatusInfo />, label: "About" },
   ];
 
   return (

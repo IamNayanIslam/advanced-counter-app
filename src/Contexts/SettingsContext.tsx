@@ -19,7 +19,6 @@ const INITIAL_SETINGS_STATE: ISettingsState = {
   remainingCountDisplay: true,
   volumeButtonControl: false,
   buttonShape: "circle",
-  language: "english",
 };
 
 type IProps = {
