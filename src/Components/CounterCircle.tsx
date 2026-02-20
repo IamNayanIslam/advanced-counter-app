@@ -11,8 +11,16 @@ const CounterCircle = ({ counter, setEditCounterNameModal }: IProps) => {
   const { dispatch } = useContext(CountersContext);
   const { themesState } = useContext(ThemesContext);
 
+  const triggerVibration = () => {
+    if ("vibrate" in navigator) {
+      // ৫০ মিলিসেকেন্ডের একটি ছোট ভাইব্রেশন (ট্যাপ ফিডব্যাক)
+      navigator.vibrate(50);
+    }
+  };
+
   const handleIncrement = () => {
     dispatch({ type: "INCREMENT_COUNT", payload: counter.id });
+    triggerVibration();
   };
 
   const handleNameEdit = (id: string) => {
