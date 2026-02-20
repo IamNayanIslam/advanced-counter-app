@@ -24,6 +24,7 @@ const SecondNav = ({ setAddCounterModal }: IProps) => {
     const activeCounter = countersState.counters.find(
       (counter) => counter.isActive,
     );
+
     if (activeCounter && activeCounter.count > 0) {
       toast(
         (t) => (
@@ -40,9 +41,16 @@ const SecondNav = ({ setAddCounterModal }: IProps) => {
               </button>
               <button
                 onClick={() => {
-                  dispatch({ type: "RESET_COUNT" });
                   toast.dismiss(t.id);
-                  toast.success("Counter Reseted!");
+
+                  dispatch({ type: "RESET_COUNT" });
+
+                  setTimeout(() => {
+                    toast.success("Counter Reseted!", {
+                      duration: 2000,
+                      position: "top-center",
+                    });
+                  }, 100);
                 }}
                 className="px-3 py-1 text-xs font-medium bg-red-500 text-white rounded-md hover:bg-red-600 transition-colors shadow-sm"
               >
@@ -52,6 +60,7 @@ const SecondNav = ({ setAddCounterModal }: IProps) => {
           </div>
         ),
         {
+          id: "reset-confirmation",
           duration: 5000,
           position: "top-center",
           style: {
