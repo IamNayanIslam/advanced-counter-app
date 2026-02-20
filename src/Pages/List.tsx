@@ -45,15 +45,16 @@ const List = () => {
             </button>
             <button
               onClick={() => {
+                // ১. Sound play korbe
                 if (settingsState.sound) {
                   deleteCounterSound();
                 }
-                toast.remove();
+
+                // ২. Shudhu confirmation toast ta dismiss hbe
+                toast.dismiss(t.id);
+
+                // ৩. Delete action dispatch hbe, kono success toast thakbe na
                 dispatch({ type: "DELETE_COUNTER", payload: id });
-                toast.success("Counter deleted!", {
-                  duration: 2000,
-                  position: "top-center",
-                });
               }}
               className="px-3 py-1 text-xs font-medium bg-red-500 text-white rounded-md hover:bg-red-600 transition-colors shadow-sm"
             >
