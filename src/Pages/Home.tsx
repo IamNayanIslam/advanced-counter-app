@@ -82,7 +82,7 @@ const Home = () => {
   }, [countersState.counters]);
 
   return (
-    <div className="relative h-[100dvh] flex flex-col overflow-hidden">
+    <div className="fixed inset-0 h-[100dvh] flex flex-col overflow-hidden touch-none bg-[#0E1820]">
       <Toaster />
       <Navbar />
       <SecondNav setAddCounterModal={setAddCounterModal} />
