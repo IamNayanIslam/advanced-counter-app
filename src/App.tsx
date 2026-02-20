@@ -5,6 +5,7 @@ import Themes from "./Pages/Themes";
 import Settings from "./Pages/Settings";
 import Error from "./Pages/Error";
 import Usage from "./Pages/Usage";
+import About from "./Pages/about";
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
             <Route path="/usage" element={<Usage />} />
             <Route path="/themes" element={<Themes />} />
             <Route path="/settings" element={<Settings />} />
+            <Route path="/about" element={<About />} />
             <Route path="*" element={<Error />} />
           </Routes>
         </BrowserRouter>
@@ -26,5 +28,3 @@ function App() {
 }
 
 export default App;
-
-

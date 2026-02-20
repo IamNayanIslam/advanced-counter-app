@@ -8,13 +8,13 @@ import type {
   SettingsAction,
 } from "../Reducers/SettingsReducer";
 import Navbar from "../Components/Navbar";
+import { Link } from "react-router-dom";
+import { FaInfoCircle } from "react-icons/fa";
 
 const Settings = () => {
   const { settingsState, settingsDispatch } = useContext(SettingsContext);
   const { themesState } = useContext(ThemesContext);
 
-  // বুলিয়ান অপশনগুলোর লিস্ট
-  // সরাসরি SettingsAction টাইপ ব্যবহার করুন
   const booleanOptions: {
     id: keyof ISettingsState;
     label: string;
@@ -57,8 +57,6 @@ const Settings = () => {
       <Navbar />
       <div className="flex-1 bg-[#0E1820] p-6 overflow-y-auto pb-24 text-white">
         <h2 className="text-2xl font-bold mb-8">Settings</h2>
-
-        {/* Boolean Options as Radio Buttons */}
         <div className="space-y-4 mb-10">
           <h3 className="text-xs font-bold text-gray-500 uppercase tracking-widest ml-2 mb-4">
             Preference Controls
@@ -70,7 +68,6 @@ const Settings = () => {
             >
               <span className="font-medium text-gray-200">{option.label}</span>
 
-              {/* Custom Radio Group */}
               <div className="flex bg-slate-900/60 p-1 rounded-xl border border-slate-700">
                 <button
                   onClick={() => settingsDispatch(option.actionType)}
@@ -90,7 +87,6 @@ const Settings = () => {
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-          {/* Language Selection Dropdown */}
           <div className="space-y-3">
             <label className="text-xs font-bold text-gray-500 uppercase tracking-widest ml-2">
               Language
@@ -115,7 +111,6 @@ const Settings = () => {
             </div>
           </div>
 
-          {/* Button Shape Dropdown */}
           <div className="space-y-3">
             <label className="text-xs font-bold text-gray-500 uppercase tracking-widest ml-2">
               Button Shape
@@ -139,6 +134,30 @@ const Settings = () => {
                 ▼
               </div>
             </div>
+          </div>
+
+          <div className="space-y-3 mt-8">
+            <label className="text-xs font-bold text-gray-500 uppercase tracking-widest ml-2">
+              App Info
+            </label>
+            <Link
+              to="/about"
+              className="flex justify-between items-center w-full bg-slate-800/60 border border-slate-700 p-4 rounded-2xl transition-all hover:border-slate-600 active:scale-[0.98] group"
+            >
+              <span className="font-semibold text-gray-200 flex gap-2 items-center">
+                About App <FaInfoCircle />
+              </span>
+
+              <div className="relative">
+                <div className="flex items-center justify-center text-gray-400 group-hover:text-white transition-colors">
+                  <span
+                    className={`text-xl group-hover:text-${themesState.theme}-400`}
+                  >
+                    ➜
+                  </span>
+                </div>
+              </div>
+            </Link>
           </div>
         </div>
       </div>
