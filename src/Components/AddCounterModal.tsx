@@ -101,7 +101,7 @@ const AddCounterModal = ({ setAddCounterModal }: IProps) => {
               Target
             </label>
             <input
-              type="text"
+              type="number"
               value={newCounter.target}
               name="target"
               onChange={handleChange}
@@ -113,7 +113,7 @@ const AddCounterModal = ({ setAddCounterModal }: IProps) => {
               Lap
             </label>
             <input
-              type="text"
+              type="number"
               value={newCounter.lap}
               name="lap"
               onChange={handleChange}

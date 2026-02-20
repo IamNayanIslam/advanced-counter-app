@@ -1,6 +1,7 @@
 import { useContext } from "react";
 import { CountersContext, type ICounter } from "../Contexts/CountersContext";
 import { ThemesContext } from "../Contexts/ThemseContext";
+import { SettingsContext } from "../Contexts/SettingsContext";
 
 interface IProps {
   counter: ICounter;
@@ -12,6 +13,7 @@ const coolInterFaceClickTone = new Audio("/cool-interface-click-tone-2568.wav");
 const CounterCircle = ({ counter, setEditCounterNameModal }: IProps) => {
   const { dispatch } = useContext(CountersContext);
   const { themesState } = useContext(ThemesContext);
+  const { settingsState } = useContext(SettingsContext);
 
   // const hardTypeWritterSound = new Audio("/hard-typewriter-click-1119.wav");
 
@@ -31,8 +33,8 @@ const CounterCircle = ({ counter, setEditCounterNameModal }: IProps) => {
   };
 
   const handleIncrement = () => {
-    triggerVibration();
-    playClickSound();
+    if (settingsState.vibration) triggerVibration();
+    if (settingsState.sound) playClickSound();
     dispatch({ type: "INCREMENT_COUNT", payload: counter.id });
   };
 
