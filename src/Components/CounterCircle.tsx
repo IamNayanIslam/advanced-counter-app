@@ -11,6 +11,16 @@ const CounterCircle = ({ counter, setEditCounterNameModal }: IProps) => {
   const { dispatch } = useContext(CountersContext);
   const { themesState } = useContext(ThemesContext);
 
+  const hardTypeWritterSound = new Audio("/hard-typewriter-click-1119.wav");
+
+  const playClickSound = () => {
+    // আগের সাউন্ড শেষ হওয়ার আগেই যদি আবার ক্লিক পড়ে, তবে এটি রিসেট করবে
+    hardTypeWritterSound.currentTime = 0;
+    hardTypeWritterSound
+      .play()
+      .catch((error) => console.log("Audio error:", error));
+  };
+
   const triggerVibration = () => {
     if ("vibrate" in navigator) {
       // ৫০ মিলিসেকেন্ডের একটি ছোট ভাইব্রেশন (ট্যাপ ফিডব্যাক)
@@ -21,6 +31,7 @@ const CounterCircle = ({ counter, setEditCounterNameModal }: IProps) => {
   const handleIncrement = () => {
     dispatch({ type: "INCREMENT_COUNT", payload: counter.id });
     triggerVibration();
+    playClickSound();
   };
 
   const handleNameEdit = (id: string) => {
