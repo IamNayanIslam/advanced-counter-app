@@ -35,9 +35,16 @@ const List = () => {
             </button>
             <button
               onClick={() => {
-                dispatch({ type: "DELETE_COUNTER", payload: id });
                 toast.dismiss(t.id);
-                toast.success("Counter deleted!");
+
+                dispatch({ type: "DELETE_COUNTER", payload: id });
+
+                setTimeout(() => {
+                  toast.success("Counter deleted!", {
+                    duration: 2000,
+                    position: "top-center",
+                  });
+                }, 100);
               }}
               className="px-3 py-1 text-xs font-medium bg-red-500 text-white rounded-md hover:bg-red-600 transition-colors shadow-sm"
             >
@@ -47,6 +54,7 @@ const List = () => {
         </div>
       ),
       {
+        id: "delete-confirmation",
         duration: 5000,
         position: "top-center",
         style: {
