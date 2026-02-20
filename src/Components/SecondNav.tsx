@@ -5,6 +5,7 @@ import toast from "react-hot-toast";
 import { useContext } from "react";
 import { CountersContext } from "../Contexts/CountersContext";
 import { ThemesContext } from "../Contexts/ThemseContext";
+import { SettingsContext } from "../Contexts/SettingsContext";
 
 interface IProps {
   setAddCounterModal: (value: boolean) => void;
@@ -13,6 +14,7 @@ interface IProps {
 const SecondNav = ({ setAddCounterModal }: IProps) => {
   const { countersState, dispatch } = useContext(CountersContext);
   const { themesState } = useContext(ThemesContext);
+  const { settingsState } = useContext(SettingsContext);
 
   const handleDecrement = (): void => {
     dispatch({ type: "DECREMENT_COUNT" });
@@ -70,12 +72,14 @@ const SecondNav = ({ setAddCounterModal }: IProps) => {
           >
             <RiRestartFill />
           </button>
-          <button
-            onClick={handleDecrement}
-            className={`text-2xl text-slate-950 bg-${themesState.theme}-400 p-2 rounded-full`}
-          >
-            <CiCircleMinus />
-          </button>
+          {settingsState.minusButton && (
+            <button
+              onClick={handleDecrement}
+              className={`text-2xl text-slate-950 bg-${themesState.theme}-400 p-2 rounded-full`}
+            >
+              <CiCircleMinus />
+            </button>
+          )}
           <button
             onClick={() => setAddCounterModal(true)}
             className={`text-2xl text-slate-950 bg-${themesState.theme}-400 p-2 rounded-full`}

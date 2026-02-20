@@ -1,5 +1,14 @@
-import { createContext, useReducer, type Dispatch, type ReactNode } from "react";
-import { SettingsReducer, type ISettingsState, type SettingsAction } from "../Reducers/SettingsReducer";
+import {
+  createContext,
+  useReducer,
+  type Dispatch,
+  type ReactNode,
+} from "react";
+import {
+  SettingsReducer,
+  type ISettingsState,
+  type SettingsAction,
+} from "../Reducers/SettingsReducer";
 
 const INITIAL_SETINGS_STATE: ISettingsState = {
   sound: true,
@@ -12,35 +21,31 @@ const INITIAL_SETINGS_STATE: ISettingsState = {
   language: "english",
 };
 
-type IProps {
-    children: ReactNode;
-}
+type IProps = {
+  children: ReactNode;
+};
 
 interface IContextValues {
-    settingsState: ISettingsState
-    dispatch: Dispatch<SettingsAction>
+  settingsState: ISettingsState;
+  settingsDispatch: Dispatch<SettingsAction>;
 }
-
 
 export const SettingsContext = createContext<IContextValues>({
   settingsState: INITIAL_SETINGS_STATE,
-  dispatch: () => {},
+  settingsDispatch: () => {},
 });
 
-export const SettingsContextProvider = ({children}: IProps) => {
-  const [settingsState, dispatch ] = useReducer(
+export const SettingsContextProvider = ({ children }: IProps) => {
+  const [settingsState, settingsDispatch] = useReducer(
     SettingsReducer,
     INITIAL_SETINGS_STATE,
   );
 
-
-  const values = {settingsState, dispatch}
-
+  const values = { settingsState, settingsDispatch };
 
   return (
-  <SettingsContext.Provider value={values}>
-        {children}
+    <SettingsContext.Provider value={values}>
+      {children}
     </SettingsContext.Provider>
-)
-  
+  );
 };

@@ -32,6 +32,41 @@ export const SettingsReducer = (
         ...state,
         vibration: !state.vibration,
       };
+    case "TOGGLE_SOUND":
+      return {
+        ...state,
+        sound: !state.sound,
+      };
+    case "TOGGLE_LAP_DISPLAY":
+      return {
+        ...state,
+        lapDisplay: !state.lapDisplay,
+      };
+    case "TOGGLE_REMAINING_COUNT_DISPLAY":
+      return {
+        ...state,
+        remainingCountDisplay: !state.remainingCountDisplay,
+      };
+    case "TOGGLE_MINUS_BUTTON":
+      return {
+        ...state,
+        minusButton: !state.minusButton,
+      };
+    case "SET_LANGUAGE":
+      return {
+        ...state,
+        language: action.payload,
+      };
+    case "SET_SHAPE":
+      return {
+        ...state,
+        buttonShape: action.payload,
+      };
+    case "TOGGLE_VOLUME_BUTTON_CONTROL":
+      return {
+        ...state,
+        volumeButtonControl: !state.volumeButtonControl,
+      };
 
     default:
       return state;
