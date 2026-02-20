@@ -15,6 +15,7 @@ const EditCounterModal = ({ setEditCounterModal }: IProps) => {
       (counter) => counter.id === countersState.counterToBeUpdatedId,
     )[0],
   );
+
   const closeEditCounterModal = () => {
     setEditCounterModal(false);
     dispatch({ type: "SET_COUNTER_TO_BE_UPDATED_ID", payload: "" });
@@ -25,32 +26,53 @@ const EditCounterModal = ({ setEditCounterModal }: IProps) => {
   };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setUpdatedCounter({ ...updatedCounter, [e.target.name]: e.target.value });
+    const { name, value, type } = e.target;
+
+    setUpdatedCounter({
+      ...updatedCounter,
+
+      [name]: type === "number" ? Number(value) : value,
+    });
   };
 
   const handleCounterUpdate = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
+    const countVal = Number(updatedCounter.count);
+    const targetVal = Number(updatedCounter.target);
+    const lapVal = Number(updatedCounter.lap);
+
     if (updatedCounter.name.trim() === "") {
       return toast.error("Name can't be empty!!!");
     }
 
-    if (typeof updatedCounter.count !== "number") {
-      return toast.error("Count be a number");
+    if (isNaN(countVal)) {
+      return toast.error("Count must be a number");
     }
 
-    if (typeof updatedCounter.target !== "number" || !updatedCounter.target) {
-      return toast.error("Target can't be empty");
+    if (isNaN(targetVal) || targetVal <= 0) {
+      return toast.error("Target must be a valid number");
     }
 
-    if (typeof updatedCounter.lap !== "number" || !updatedCounter.lap) {
-      return toast.error("Lap can't be empty");
+    if (isNaN(lapVal) || lapVal <= 0) {
+      return toast.error("Lap must be a valid number");
     }
 
-    dispatch({ type: "UPDATE_COUNTER", payload: updatedCounter });
+    dispatch({
+      type: "UPDATE_COUNTER",
+      payload: {
+        ...updatedCounter,
+        count: countVal,
+        target: targetVal,
+        lap: lapVal,
+      },
+    });
+
     dispatch({ type: "SET_COUNTER_TO_BE_UPDATED_ID", payload: "" });
     setEditCounterModal(false);
+    toast.success("Updated successfully!");
   };
+
   return (
     <div
       onClick={closeEditCounterModal}
@@ -60,7 +82,7 @@ const EditCounterModal = ({ setEditCounterModal }: IProps) => {
         onClick={handlePropagation}
         className="w-[300px] bg-white rounded-xl p-4"
       >
-        <h2 className="text-xl text-center mb-4">Edit Counter</h2>
+        <h2 className="text-xl text-center mb-4 text-gray-800">Edit Counter</h2>
         <form onSubmit={handleCounterUpdate} className="flex flex-col gap-4">
           <div className="flex flex-col">
             <label htmlFor="name" className="text-sm text-gray-700">
@@ -71,7 +93,7 @@ const EditCounterModal = ({ setEditCounterModal }: IProps) => {
               value={updatedCounter.name}
               name="name"
               onChange={handleChange}
-              className={`border-b-2 border-slate-600 focus:border-${themesState.theme}-400 outline-none bg-transparent`}
+              className={`border-b-2 border-slate-600 focus:border-${themesState.theme}-400 outline-none bg-transparent text-gray-800`}
             />
           </div>
 
@@ -84,7 +106,7 @@ const EditCounterModal = ({ setEditCounterModal }: IProps) => {
               value={updatedCounter.count}
               name="count"
               onChange={handleChange}
-              className={`border-b-2 border-slate-600 focus:border-${themesState.theme}-400 outline-none bg-transparent`}
+              className={`border-b-2 border-slate-600 focus:border-${themesState.theme}-400 outline-none bg-transparent text-gray-800`}
             />
           </div>
 
@@ -97,7 +119,7 @@ const EditCounterModal = ({ setEditCounterModal }: IProps) => {
               value={updatedCounter.target}
               name="target"
               onChange={handleChange}
-              className={`border-b-2 border-slate-600 focus:border-${themesState.theme}-400 outline-none bg-transparent`}
+              className={`border-b-2 border-slate-600 focus:border-${themesState.theme}-400 outline-none bg-transparent text-gray-800`}
             />
           </div>
           <div className="flex flex-col">
@@ -109,13 +131,14 @@ const EditCounterModal = ({ setEditCounterModal }: IProps) => {
               value={updatedCounter.lap}
               name="lap"
               onChange={handleChange}
-              className={`border-b-2 border-slate-600 focus:border-${themesState.theme}-400 outline-none bg-transparent`}
+              className={`border-b-2 border-slate-600 focus:border-${themesState.theme}-400 outline-none bg-transparent text-gray-800`}
             />
           </div>
           <button
-            className={`bg-${themesState.theme}-400 text-white w-1/4 px-2 py-1 rounded-full self-center`}
+            type="submit"
+            className={`bg-${themesState.theme}-400 text-white w-full py-2 mt-2 rounded-lg self-center shadow-md active:scale-95 transition-transform`}
           >
-            Save
+            Save Changes
           </button>
         </form>
       </div>
