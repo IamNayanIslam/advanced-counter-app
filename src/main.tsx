@@ -6,6 +6,10 @@ import { Toaster } from "react-hot-toast";
 import { ThemesContextProvider } from "./Contexts/ThemseContext.tsx";
 import { SettingsContextProvider } from "./Contexts/SettingsContext.tsx";
 
+import { registerSW } from "virtual:pwa-register";
+
+registerSW({ immediate: true });
+
 createRoot(document.getElementById("root")!).render(
   <CountersContextProvider>
     <ThemesContextProvider>

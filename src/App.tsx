@@ -5,7 +5,7 @@ import Themes from "./Pages/Themes";
 import Settings from "./Pages/Settings";
 import Error from "./Pages/Error";
 
-import About from "./Pages/about";
+import About from "./Pages/About";
 
 function App() {
   return (

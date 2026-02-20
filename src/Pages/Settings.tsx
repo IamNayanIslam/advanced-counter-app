@@ -3,7 +3,6 @@ import { SettingsContext } from "../Contexts/SettingsContext";
 import { ThemesContext } from "../Contexts/ThemseContext";
 import type {
   CounterShape,
-  Language,
   ISettingsState,
   SettingsAction,
 } from "../Reducers/SettingsReducer";
