@@ -1,7 +1,7 @@
 import { RiRestartFill } from "react-icons/ri";
 import { CiCircleMinus } from "react-icons/ci";
 import { MdPlaylistAddCircle } from "react-icons/md";
-import { MdMotionPhotosAuto } from "react-icons/md";
+
 import { useContext } from "react";
 import { CountersContext } from "../Contexts/CountersContext";
 import { ThemesContext } from "../Contexts/ThemseContext";
@@ -23,12 +23,7 @@ const SecondNav = ({ setAddCounterModal }: IProps) => {
   };
   return (
     <div>
-      <div className="flex justify-between items-center bg-transparent px-4 py-4 mb-10">
-        <button
-          className={`text-4xl text-slate-950 bg-${themesState.theme}-400 p-2 rounded-full`}
-        >
-          <MdMotionPhotosAuto />
-        </button>
+      <div className="flex justify-end items-center bg-transparent px-4 py-4 mb-10">
         <div className="flex gap-4">
           <button
             onClick={handleReset}
