@@ -9,6 +9,8 @@ const About = () => {
   const features = [
     "Advanced Context API & useReducer State Management",
     "Dynamic Theme System with 6 Premium Colors",
+    "Real-time Prayer, Suhoor & Iftar Times (GPS Based)",
+    "Location-Aware Hijri Date Integration",
     "Customizable Counter Shapes (Hexagon, Circle, Cubical)",
     "Haptic Feedback & Interactive Sound Effects",
   ];
@@ -18,10 +20,9 @@ const About = () => {
       <Navbar />
 
       <main className="flex-1 p-6 max-w-2xl mx-auto w-full pb-24">
-        {/* Header Section */}
         <div className="text-center mb-10 mt-4">
           <div className="inline-block px-3 py-1 rounded-full bg-slate-800 text-[10px] mb-4 border border-slate-700 text-gray-400">
-            STABLE_RELEASE / v1.0.0
+            STABLE_RELEASE / v1.1.0{" "}
           </div>
           <h1
             className={`text-4xl font-black text-${themesState.theme}-400 mb-2 tracking-tighter uppercase`}
@@ -33,7 +34,6 @@ const About = () => {
           </p>
         </div>
 
-        {/* Project Context */}
         <div className="bg-slate-800/30 border border-slate-700/50 p-6 rounded-3xl mb-8 relative group overflow-hidden">
           <div className="absolute top-0 right-0 p-4 opacity-10">
             <FaTerminal className="text-4xl" />
@@ -57,13 +57,19 @@ const About = () => {
               Context API, UseReducer, React-TypeScript,
             </span>{" "}
             and
-            <span className="text-white"> Complex UI Logic.</span> It
-            demonstrates how a simple counter can be elevated to an
-            industry-standard application architecture.
+            <span className="text-white"> Complex UI Logic.</span> The app now
+            features
+            <span className={`text-${themesState.theme}-400`}>
+              {" "}
+              Geolocation-based Prayer Times{" "}
+            </span>
+            integrating external APIs to provide real-time spiritual data,
+            demonstrating
+            <span className="text-white"> Async API Handling </span> and
+            professional architecture.
           </p>
         </div>
 
-        {/* Features List */}
         <div className="space-y-4 mb-12">
           <div className="flex items-center gap-3 ml-2 mb-2 text-indigo-400">
             <FaTools className="text-xl" />
@@ -88,8 +94,6 @@ const About = () => {
           </div>
         </div>
 
-        {/* Developer Card */}
-        {/* Developer Card - Image Section Updated */}
         <div
           className={`relative overflow-hidden bg-slate-900 border border-slate-700 p-8 rounded-[2rem] text-center shadow-2xl`}
         >
@@ -98,7 +102,6 @@ const About = () => {
           />
 
           <div className="flex flex-col items-center">
-            {/* Image Wrapper */}
             <div
               className={`p-1 rounded-full border border-slate-700 mb-4 bg-slate-800 w-24 h-24 overflow-hidden`}
             >
@@ -129,7 +132,6 @@ const About = () => {
           </div>
         </div>
 
-        {/* Footer Note */}
         <p className="text-center text-gray-600 text-[9px] mt-12 uppercase tracking-[0.3em]">
           {"<"} Designed & Developed by Nayan {"/>"}
         </p>
