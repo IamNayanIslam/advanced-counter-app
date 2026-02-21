@@ -44,11 +44,6 @@ const Settings = () => {
       label: "Remaining Count Display",
       actionType: { type: "TOGGLE_REMAINING_COUNT_DISPLAY" },
     },
-    {
-      id: "volumeButtonControl",
-      label: "Volume Button Control",
-      actionType: { type: "TOGGLE_VOLUME_BUTTON_CONTROL" },
-    },
   ];
 
   return (
@@ -110,8 +105,7 @@ const Settings = () => {
               </div>
             </div>
           </div>
-
-          <div className="space-y-3 mt-8">
+          <div className="space-y-3">
             <label className="text-xs font-bold text-gray-500 uppercase tracking-widest ml-2">
               App Info
             </label>

@@ -9,7 +9,6 @@ const About = () => {
   const features = [
     "Advanced Context API & useReducer State Management",
     "Dynamic Theme System with 6 Premium Colors",
-    "Volume Button Control for Seamless Counting",
     "Customizable Counter Shapes (Hexagon, Circle, Cubical)",
     "Haptic Feedback & Interactive Sound Effects",
   ];

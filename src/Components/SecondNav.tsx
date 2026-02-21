@@ -6,6 +6,7 @@ import { useContext } from "react";
 import { CountersContext } from "../Contexts/CountersContext";
 import { ThemesContext } from "../Contexts/ThemseContext";
 import { SettingsContext } from "../Contexts/SettingsContext";
+import { useLocation } from "react-router-dom";
 
 interface IProps {
   setAddCounterModal: (value: boolean) => void;
@@ -15,7 +16,8 @@ const SecondNav = ({ setAddCounterModal }: IProps) => {
   const { countersState, dispatch } = useContext(CountersContext);
   const { themesState } = useContext(ThemesContext);
   const { settingsState } = useContext(SettingsContext);
-
+  const location = useLocation();
+  const isListPage = location.pathname === "/list";
   const handleDecrement = (): void => {
     dispatch({ type: "DECREMENT_COUNT" });
   };
@@ -73,15 +75,17 @@ const SecondNav = ({ setAddCounterModal }: IProps) => {
   };
   return (
     <div>
-      <div className="flex justify-end items-center bg-transparent px-4 py-4 mb-10">
+      <div className="flex justify-end items-center bg-transparent px-4 py-4">
         <div className="flex gap-4">
-          <button
-            onClick={handleReset}
-            className={`text-2xl text-slate-950 bg-${themesState.theme}-400 p-2 rounded-full`}
-          >
-            <RiRestartFill />
-          </button>
-          {settingsState.minusButton && (
+          {!isListPage && (
+            <button
+              onClick={handleReset}
+              className={`text-2xl text-slate-950 bg-${themesState.theme}-400 p-2 rounded-full`}
+            >
+              <RiRestartFill />
+            </button>
+          )}
+          {settingsState.minusButton && !isListPage && (
             <button
               onClick={handleDecrement}
               className={`text-2xl text-slate-950 bg-${themesState.theme}-400 p-2 rounded-full`}

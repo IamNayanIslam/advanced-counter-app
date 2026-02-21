@@ -6,15 +6,33 @@ import Settings from "./Pages/Settings";
 import Error from "./Pages/Error";
 
 import About from "./Pages/About";
+import { useState } from "react";
 
 function App() {
+  const [addCounterModal, setAddCounterModal] = useState(false);
   return (
     <>
       <div className="min-h-screen bg-slate-950">
         <BrowserRouter>
           <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/list" element={<List />} />
+            <Route
+              path="/"
+              element={
+                <Home
+                  addCounterModal={addCounterModal}
+                  setAddCounterModal={setAddCounterModal}
+                />
+              }
+            />
+            <Route
+              path="/list"
+              element={
+                <List
+                  addCounterModal={addCounterModal}
+                  setAddCounterModal={setAddCounterModal}
+                />
+              }
+            />
             <Route path="/themes" element={<Themes />} />
             <Route path="/settings" element={<Settings />} />
             <Route path="/about" element={<About />} />

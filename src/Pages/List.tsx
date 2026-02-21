@@ -9,10 +9,16 @@ import EditCounterModal from "../Components/EditCounterModal";
 import toast, { Toaster } from "react-hot-toast";
 import { ThemesContext } from "../Contexts/ThemseContext";
 import { SettingsContext } from "../Contexts/SettingsContext";
+import AddCounterModal from "../Components/AddCounterModal";
+import SecondNav from "../Components/SecondNav";
 
 const deleteSound = new Audio("/delete.mp3");
+interface IProps {
+  addCounterModal: boolean;
+  setAddCounterModal: (value: boolean) => void;
+}
 
-const List = () => {
+const List = ({ addCounterModal, setAddCounterModal }: IProps) => {
   const { countersState, dispatch } = useContext(CountersContext);
   const { themesState } = useContext(ThemesContext);
   const { settingsState } = useContext(SettingsContext);
@@ -45,15 +51,12 @@ const List = () => {
             </button>
             <button
               onClick={() => {
-                // ১. Sound play korbe
                 if (settingsState.sound) {
                   deleteCounterSound();
                 }
 
-                // ২. Shudhu confirmation toast ta dismiss hbe
                 toast.dismiss(t.id);
 
-                // ৩. Delete action dispatch hbe, kono success toast thakbe na
                 dispatch({ type: "DELETE_COUNTER", payload: id });
               }}
               className="px-3 py-1 text-xs font-medium bg-red-500 text-white rounded-md hover:bg-red-600 transition-colors shadow-sm"
@@ -90,7 +93,8 @@ const List = () => {
     <div className="relative min-h-screen">
       <Toaster />
       <Navbar />
-      <ul className="flex flex-col items-center gap-4 mt-8">
+      <SecondNav setAddCounterModal={setAddCounterModal} />
+      <ul className="flex flex-col items-center gap-4 mt-4">
         {counters.map((counter) => (
           <li
             onClick={() => selectCounter(counter.id)}
@@ -111,6 +115,9 @@ const List = () => {
       </ul>
       {editCounterModal && (
         <EditCounterModal setEditCounterModal={setEditCounterModal} />
+      )}
+      {addCounterModal && (
+        <AddCounterModal setAddCounterModal={setAddCounterModal} />
       )}
     </div>
   );

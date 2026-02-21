@@ -12,10 +12,10 @@ const Themes = () => {
     dispatch({ type: "SET_THEME", payload: color });
   };
   return (
-    <div className="flex flex-col h-screen">
+    <div className="flex flex-col min-h-screen">
       <Navbar />
       <h2>Select Themes</h2>
-      <div className="flex flex-wrap justify-center items-center gap-4 flex-1">
+      <div className="flex flex-wrap justify-center items-center gap-8 flex-1 mb-4">
         <button onClick={() => selectTheme("cyan")}>
           <ThemeComponent bg="cyan" />
         </button>
