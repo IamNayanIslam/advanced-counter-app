@@ -46,7 +46,7 @@ const About = () => {
             </h2>
           </div>
 
-          <p className="text-gray-300 leading-relaxed text-sm">
+          <p className="text-gray-300 leading-relaxed text-sm text-justify">
             This is an{" "}
             <span className={`text-${themesState.theme}-400`}>
               Advanced Practice Project

@@ -15,7 +15,7 @@ const Themes = () => {
     <div className="flex flex-col h-fit">
       <Navbar />
       <h2>Select Themes</h2>
-      <div className="flex flex-wrap justify-center items-center gap-8 flex-1 mb-4">
+      <div className="flex flex-wrap justify-center content-center gap-x-8 gap-y-4 flex-1 mb-4">
         <button onClick={() => selectTheme("cyan")}>
           <ThemeComponent bg="cyan" />
         </button>
