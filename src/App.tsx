@@ -7,6 +7,7 @@ import Error from "./Pages/Error";
 
 import About from "./Pages/About";
 import { useState } from "react";
+import PrayerTimes from "./Pages/PrayerTimes";
 
 function App() {
   const [addCounterModal, setAddCounterModal] = useState(false);
@@ -37,6 +38,7 @@ function App() {
             <Route path="/settings" element={<Settings />} />
             <Route path="/about" element={<About />} />
             <Route path="*" element={<Error />} />
+            <Route path="/prayer-times" element={<PrayerTimes />} />
           </Routes>
         </BrowserRouter>
       </div>

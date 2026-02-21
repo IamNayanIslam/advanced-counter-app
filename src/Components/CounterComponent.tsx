@@ -55,7 +55,7 @@ const CounterComponent = ({ counter, setEditCounterNameModal }: IProps) => {
       <div
         onClick={handleIncrement}
         className={`w-[300px] h-[300px] flex justify-center items-center cursor-pointer transition-all duration-300 
-          bg-${themesState.theme}-400 
+          bg-${themesState.theme}-400
           ${getShapeClasses()} 
           active:scale-95 shadow-xl`}
       >

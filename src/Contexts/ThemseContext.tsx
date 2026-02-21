@@ -21,7 +21,7 @@ export interface IProps {
 }
 
 export const INITIAL_THEMES_STATE: ITheme = {
-  theme: "cyan",
+  theme: "cyan-400",
 };
 
 export const ThemesContext = createContext<IContextValue>({

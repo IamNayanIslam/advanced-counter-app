@@ -16,7 +16,7 @@ const ThemeComponent = ({ bg }: IProps) => {
 
   return (
     <div
-      className={`flex flex-col gap-4 p-4 border-2 rounded-xl transition-all duration-300 cursor-pointer border-${bg}-400 active:scale-95`}
+      className={`flex flex-col gap-4 p-4 border-2 rounded-xl transition-all duration-300 cursor-pointer border-${activeColor} active:scale-95`}
       style={
         {
           "--glow-color": activeColor,

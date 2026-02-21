@@ -6,6 +6,7 @@ import { MdSettingsApplications } from "react-icons/md";
 import { NavLink } from "react-router-dom";
 import { useContext } from "react";
 import { ThemesContext } from "../Contexts/ThemseContext";
+import { FaMosque } from "react-icons/fa6";
 
 const Navbar = () => {
   const { themesState } = useContext(ThemesContext);
@@ -20,10 +21,13 @@ const Navbar = () => {
   const navItems = [
     { to: "/", icon: <IoMdHome />, label: "Home" },
     { to: "/list", icon: <FaRegListAlt />, label: "List" },
+    { to: "/prayer-times", icon: <FaMosque />, label: "Prayer Times" },
     { to: "/themes", icon: <IoIosColorPalette />, label: "Themes" },
     { to: "/settings", icon: <MdSettingsApplications />, label: "Settings" },
     { to: "/about", icon: <GrStatusInfo />, label: "About" },
   ];
+
+  console.log(themesState.theme);
 
   return (
     <div
