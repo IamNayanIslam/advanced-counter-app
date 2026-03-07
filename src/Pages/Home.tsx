@@ -6,7 +6,6 @@ import CounterCircle from "../Components/CounterComponent";
 import AddCounterModal from "../Components/AddCounterModal";
 import EditCounterNameModal from "../Components/EditCounterNameModal";
 import HomeFooter from "../Components/HomeFooter";
-import { Toaster } from "react-hot-toast";
 
 interface IProps {
   addCounterModal: boolean;
