@@ -8,11 +8,13 @@ import Error from "./Pages/Error";
 import About from "./Pages/About";
 import { useState } from "react";
 import PrayerTimes from "./Pages/PrayerTimes";
+import { Toaster } from "react-hot-toast";
 
 function App() {
   const [addCounterModal, setAddCounterModal] = useState(false);
   return (
     <>
+      <Toaster />
       <div className="min-h-screen bg-slate-950">
         <BrowserRouter>
           <Routes>
