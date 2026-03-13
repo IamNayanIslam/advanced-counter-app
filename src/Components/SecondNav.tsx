@@ -46,16 +46,6 @@ const SecondNav = ({ setAddCounterModal }: IProps) => {
                   toast.dismiss(t.id);
 
                   dispatch({ type: "RESET_COUNT" });
-
-                  setTimeout(() => {
-                    toast.success("Counter Reseted!", {
-                      duration: 2000,
-                      position: "top-center",
-                      style: {
-                        pointerEvents: "none",
-                      },
-                    });
-                  }, 100);
                 }}
                 className="px-3 py-1 text-xs font-medium bg-red-500 text-white rounded-md hover:bg-red-600 transition-colors shadow-sm"
               >
