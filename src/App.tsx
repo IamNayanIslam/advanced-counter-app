@@ -9,12 +9,13 @@ import About from "./Pages/About";
 import { useState } from "react";
 import PrayerTimes from "./Pages/PrayerTimes";
 import { Toaster } from "react-hot-toast";
+import { createPortal } from "react-dom";
 
 function App() {
   const [addCounterModal, setAddCounterModal] = useState(false);
   return (
     <>
-      <Toaster />
+      {createPortal(<Toaster />, document.body)}
       <div className="min-h-screen bg-slate-950">
         <BrowserRouter>
           <Routes>

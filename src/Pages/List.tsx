@@ -6,7 +6,7 @@ import { MdDelete } from "react-icons/md";
 import { useNavigate } from "react-router-dom";
 import EditCounterModal from "../Components/EditCounterModal";
 
-import toast, { Toaster } from "react-hot-toast";
+import toast from "react-hot-toast";
 import { ThemesContext } from "../Contexts/ThemseContext";
 import { SettingsContext } from "../Contexts/SettingsContext";
 import AddCounterModal from "../Components/AddCounterModal";
@@ -91,7 +91,6 @@ const List = ({ addCounterModal, setAddCounterModal }: IProps) => {
   const counters = countersState.counters;
   return (
     <div className="relative min-h-screen">
-      <Toaster />
       <Navbar />
       <SecondNav setAddCounterModal={setAddCounterModal} />
       <ul className="flex flex-col items-center gap-4 mt-4">
