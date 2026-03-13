@@ -51,6 +51,9 @@ const SecondNav = ({ setAddCounterModal }: IProps) => {
                     toast.success("Counter Reseted!", {
                       duration: 2000,
                       position: "top-center",
+                      style: {
+                        pointerEvents: "none",
+                      },
                     });
                   }, 100);
                 }}
@@ -68,7 +71,7 @@ const SecondNav = ({ setAddCounterModal }: IProps) => {
           style: {
             minWidth: "250px",
             border: "1px solid #e2e8f0",
-            pointerEvents: "none",
+            pointerEvents: "auto",
           },
         },
       );
