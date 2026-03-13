@@ -68,6 +68,7 @@ const SecondNav = ({ setAddCounterModal }: IProps) => {
           style: {
             minWidth: "250px",
             border: "1px solid #e2e8f0",
+            pointerEvents: "none",
           },
         },
       );
